@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.3.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js",
+        "jquery.js",
+        "jquery.min.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@4.2.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/"
+    },
+    {
+      "library": "modernizr@2.8.3",
+      "destination": "wwwroot/lib/modernizr/"
+    },
+    {
+      "library": "jQuery-slimScroll@1.3.8",
+      "destination": "wwwroot/lib/jQuery-slimScroll/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "Detect.js@2.2.2",
+      "destination": "wwwroot/lib/Detect.js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "raphael@2.3.0",
+      "destination": "wwwroot/lib/raphael/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery.nicescroll@3.7.6",
+      "destination": "wwwroot/lib/jquery.nicescroll/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery.blockUI@2.70",
+      "destination": "wwwroot/lib/jquery.blockUI/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "popper.js@1.15.0",
+      "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jQuery-Knob@1.2.13",
+      "destination": "wwwroot/lib/jQuery-Knob/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "fastclick@1.0.6",
+      "destination": "wwwroot/lib/fastclick/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-scrollTo@2.1.2",
+      "destination": "wwwroot/lib/jquery-scrollTo/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "morris.js@0.5.1",
+      "destination": "wwwroot/lib/morris.js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "fastclick@1.0.6",
+      "destination": "wwwroot/lib/fastclick/"
+    },
+    {
+      "library": "material-design-icons@3.0.1",
+      "destination": "wwwroot/lib/material-design-icons/",
+      "files": [
+        "iconfont/material-icons.min.css"
+      ]
+    }
+  ]
+}

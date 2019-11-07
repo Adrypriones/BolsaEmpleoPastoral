@@ -8,14 +8,12 @@ D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\bin\Debug\netcoreapp
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csproj.CoreCompileInputs.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cs
-D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.AssemblyInfoInputs.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.AssemblyInfo.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.TagHelpers.input.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.TagHelpers.output.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorCoreGenerate.cache
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
@@ -33,3 +31,12 @@ D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.pdb
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csproj.CopyComplete
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csprojAssemblyReference.cache
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\Login.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\Register.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Shared\LayoutSecondary.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\ResetPassword.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Candidate.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Studies.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Experience.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Document.g.cshtml.cs

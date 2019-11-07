@@ -1,0 +1,80 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <title>@ViewData["Title"] - PastoralEmpleo</title>
+
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+
+    <!-- App css -->
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/modernizr/modernizr.min.js"></script>
+
+</head>
+
+
+<body class="fixed-left">
+
+    <!-- Begin page -->
+    <div id="wrapper">  
+        
+            <!-- Start content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        @RenderBody()
+
+                    </div>
+                    
+
+                </div> <!-- container -->
+
+            </div> <!-- content -->         
+
+    </div>
+    <!-- END wrapper -->
+    <!-- jQuery  -->
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper.js/umd/popper.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/Detect.js/detect.js"></script>
+    <script src="~/lib/fastclick/fastclick.js"></script>
+    <script src="~/lib/jquery.blockUI/jquery.blockUI.js"></script>
+    <script src="~/lib/assets/waves.js"></script>
+    <script src="~/lib/jquery.nicescroll/jquery.nicescroll.js"></script>
+    <script src="~/lib/jQuery-slimScroll/jquery.slimscroll.js"></script>
+    <script src="~/lib/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+
+    <!-- KNOB JS -->
+    <!--[if IE]>
+    <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
+    <![endif]-->
+    <script src="~/lib/jQuery-Knob/jquery.knob.min.js"></script>
+
+    <!--Morris Chart-->
+    <script src="~/lib/morris.js/morris.min.js"></script>
+
+    <script src="~/lib/raphael/raphael.min.js"></script>
+
+    <!-- Dashboard init -->
+    <script src="~/lib/assets/jquery.dashboard.js"></script>
+
+
+    <!-- App js -->
+    <script src="~/lib/assets/jquery.core.js"></script>
+    <script src="~/lib/assets/jquery.app.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

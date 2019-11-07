@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Studies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Nivel Estudio</small></h1>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-3">
+            <a href="@Url.Action("Candidate", "Inscription")" class="btn btn-info" style="color:#004D97"><i class="zmdi zmdi-plus"></i> &nbsp; PERSONALES</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <a href="@Url.Action("Studies", "Inscription")" class="btn btn-success" style="color:#004D97"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; ACADÉMICOS</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <a href="@Url.Action("Experience", "Inscription")" class="btn btn-primary" style="color:#004D97"><i class="zmdi zmdi-search"></i> &nbsp; EXPERIENCIA</a>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+            <a href="@Url.Action("Document", "Inscription")" class="btn btn-danger" style="color:#004D97"><i class="zmdi zmdi-comment-list"></i> &nbsp; OTROS DOCUMENTOS</a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="panel panel-info">
+
+
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+
+                    <legend><i class="zmdi zmdi-account-box"></i> &nbsp; Académico</legend>
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="School">*Nombre Institución</Label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="StudyLevel">*Nivel Estudio</Label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="Obtainedtitle">*Titulo</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="Name">*Graduado</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="initialperiod">Fecha Inicio</label>
+                                    <input class="form-control" type="date" name="data">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="endperiod">Fecha Terminación</label>
+                                    <input class="form-control" type="date" name="date">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="Brihtday">*Periodicidad</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           placeholder="D/M/A" class="form-control">
+                                </div>
+                            </div>    
+                            
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="Document">Adjuntar Titulo ó Certificación</label>
+                                    <input type="file" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="margin-top: 20px">
+            <input type="submit" value="Guardar" class="btn btn-primary btn-raised btn-sm" />
+        </div>
+    </div>
+</section>

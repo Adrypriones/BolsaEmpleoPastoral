@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewData["Title"] = "Event";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Convocatoria</small></h1>
+        </div>
+    </div>
+    
+
+        <div class="container-fluid">
+            <div class="panel panel-info">
+
+
+                @Html.AntiForgeryToken()
+
+                <fieldset>
+
+                    
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="Number">*Convocatoria No.</Label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="initialeventdate">Fecha Convocatoria</label>
+                                    <input class="form-control" type="date" name="date">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="endeventdate">Fecha Cierre</label>
+                                    <input class="form-control" type="date" name="date">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="position">*Cargo</Label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="jobdescription">*Descripcion</Label>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="product">*Producto</Label>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="study">*Formación</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="experience">*Experiencia</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="vacantjob">*Numero Vacantes</Label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="contracttype">*Tipo de Contrato</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="Period">*Período Laboral</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="place">*Lugar Laboral</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="salary">*Salario</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="waytopay">*Forma de Pago</label>
+                                    <input type="text" name="nick" parsley-trigger="change" required
+                                           class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="initialjobetime">*Iniciación de Jornada</label>                                    
+                                    <input class="form-control" type="time" name="time">
+                                </div>                                
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <label for="endjobtime">*Fin de Jornada</label>                                    
+                                    <input class="form-control" type="time" name="time">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="funciotins">*Funciones a Desempeñar</Label>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    <Label for="observation">*Observaciones</Label>
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <div class="margin-top: 20px">
+            <input type="submit" value="Guardar" class="btn btn-light btn-raised btn-sm" />
+        </div>
+    </div>
+
+</section>

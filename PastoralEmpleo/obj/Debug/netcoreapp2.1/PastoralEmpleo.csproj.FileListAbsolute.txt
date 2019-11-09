@@ -40,3 +40,4 @@ D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Studies.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Experience.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Document.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Event\Event.g.cshtml.cs

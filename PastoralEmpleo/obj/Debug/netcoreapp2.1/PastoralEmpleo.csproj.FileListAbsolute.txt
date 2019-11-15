@@ -41,3 +41,6 @@ D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Experience.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Document.g.cshtml.cs
 D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Event\Event.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\StudyListing.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\EmploymentListing.g.cshtml.cs
+D:\Proyect\EmploymentExchange\PastoralEmpleo\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\DocumentListing.g.cshtml.cs

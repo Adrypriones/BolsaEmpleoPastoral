@@ -67,7 +67,7 @@ using PastoralEmpleo.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n    \r\n    ");
             EndContext();
             BeginContext(135, 3773, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c7746f54aa44c9f937fe8d4ae01b281", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "95133fac492c48ed8ae0a03c3755c710", async() => {
                 BeginContext(141, 472, true);
                 WriteLiteral(@"        
         
@@ -84,7 +84,7 @@ using PastoralEmpleo.Models;
                     ");
                 EndContext();
                 BeginContext(613, 2136, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "404f77464e48443a8b35374b3a1a9f4d", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a9e8a66f3d348c9901d9a4c778c1459", async() => {
                     BeginContext(670, 2072, true);
                     WriteLiteral(@"
 

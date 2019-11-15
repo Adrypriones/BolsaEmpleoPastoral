@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "DocumentListing";
+}
+
+<section>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Listado Empleo</small></h1>
+        </div>
+    </div>
+
+    <div>
+
+        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Documento</a>
+        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Consulta Documento</a>        
+        <a href="@Url.Action("Document", "Inscription")" class="btn btn-success btn-rounded waves-effect waves-light m-b-5" style="color:#004D97">Editar</a>
+        <a href="@Url.Action("Login", "Login")" class="btn btn-danger btn-rounded waves-light m-b-5" style="color:#004D97">Eliminar</a>
+
+    </div>
+
+
+    <div class="text-center">
+        <div class="margin-top: 20px">
+            <input type="submit" value="Guardar" class="btn btn-primary btn-raised btn-sm" />
+        </div>
+    </div>
+
+</section>
+
+
+

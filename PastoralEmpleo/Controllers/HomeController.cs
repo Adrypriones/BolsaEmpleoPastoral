@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
 
 namespace PastoralEmpleo.Controllers
@@ -12,6 +13,16 @@ namespace PastoralEmpleo.Controllers
     {
         public IActionResult Index()
         {
+            using (PastoralContext db = new PastoralContext())
+            {
+                Console.WriteLine($"Los actores cuyo nombre comienza con 'A' en la base sakila son");
+                foreach (Gender gender in db.Gender.ToList())
+                {
+                    Console.WriteLine($"{gender.Name}");
+                }
+            }
+
+
             return View();
         }
 

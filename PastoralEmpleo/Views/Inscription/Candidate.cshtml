@@ -1,15 +1,19 @@
-﻿
+﻿@using PastoralEmpleo.Shared.Enums
+
+@model PastoralEmpleo.ViewModel.CandidateInformationViewModel
+
 @{
-    ViewData["Title"] = "Candidate";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+        ViewData["Title"] = "Candidate";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
 <section>
-      <div class="container-fluid">
-        <div class="page-header">
-            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Datos Personales</small></h1>
-        </div>
-      </div>
+    <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Datos Personales</small></h1>
+            </div>
+   </div>
+
     <div class="row">
 
         <div class="col-xs-12 col-sm-3">
@@ -28,131 +32,130 @@
             <a href="@Url.Action("Document", "Inscription")" class="btn btn-danger" style="color:#004D97"><i class="zmdi zmdi-comment-list"></i> &nbsp; OTROS DOCUMENTOS</a>
         </div>
 
+
         <div class="container-fluid">
             <div class="panel panel-info">
 
+                @using (Html.BeginForm("Guardar", "Inscription", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
 
-                @Html.AntiForgeryToken()
+                    <fieldset>
 
-                <fieldset>
+                        <legend><i class="zmdi zmdi-account-box"></i> &nbsp; Informacion Personal </legend>
 
-                    <legend><i class="zmdi zmdi-account-box"></i> &nbsp; Informacion Personal </legend>
+                        <div class="container-fluid">
 
-                    <div class="container-fluid">
-                        <div class="row">
+                            <div class="row">
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <Label for="DocumentType">*Tipo Documento</Label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Iddocumenttype, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Iddocumenttype, new SelectList(Enum.GetValues(typeof(DocumentType))),
+                                                "", new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <Label for="IdentityDocument">*Numero Documento</Label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Identitydocumento, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Identitydocumento, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Document">Adjunte Documento</label>
-                                    <input type="file" class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        <label for="Document">Adjunte Documento</label>
+                                        <input type="file" class="form-control">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="userName">*Apellido</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Surname, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Name">*Nombre</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="mail">*Correo</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Mail, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Gender">*Sexo</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Idgender, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Idgender, new SelectList(Enum.GetValues(typeof(GenderType))),
+                                                "", new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="CivilStatus">*Estado Civil</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Idcivilstatus, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Idcivilstatus, Model.CivilStatusList, "", new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Brihtday">Fecha Nacimiento</label>
-                                    <input class="form-control" type="date" name="date">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Brithdate, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Brithdate, new { @class = "form-control", required = "required", @type = "Date" })
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Telephone">*Telefono</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Telephone, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Addres">*Dirección</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="Municipality">*Municipio</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Municipality, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Municipality, new { @class = "form-control" })
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="form-group label-floating">
-                                    <label for="District">*Barrio</label>
-                                    <input type="text" name="nick" parsley-trigger="change" required
-                                           class="form-control">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.District, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.District, new { @class = "form-control" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </fieldset>
+
+                    <div class="text-center">
+                        <div class="margin-top: 20px">
+                            <input type="submit" value="Guardar" class="btn btn-primary btn-bordred btn-sm" />
+                        </div>
                     </div>
-                </fieldset>
+
+                }
             </div>
         </div>
-   </div>
 
-        <div class="text-center">
-            <div class="margin-top: 20px">
-                <input type="submit" value="Guardar" class="btn btn-light btn-raised btn-sm" />
-            </div>
-        </div>   
-
+        
+    </div>
 </section>

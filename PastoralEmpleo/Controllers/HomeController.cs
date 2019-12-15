@@ -15,13 +15,11 @@ namespace PastoralEmpleo.Controllers
         {
             using (PastoralContext db = new PastoralContext())
             {
-                Console.WriteLine($"Los actores cuyo nombre comienza con 'A' en la base sakila son");
                 foreach (Gender gender in db.Gender.ToList())
                 {
                     Console.WriteLine($"{gender.Name}");
                 }
             }
-
 
             return View();
         }

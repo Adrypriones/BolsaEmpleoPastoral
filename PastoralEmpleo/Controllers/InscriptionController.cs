@@ -46,10 +46,6 @@ namespace PastoralEmpleo.Controllers
                 candidate.Brithdate = candidateViewModel.Brithdate;
                 candidate.Municipality = candidateViewModel.Municipality;
                 candidate.District = candidateViewModel.District;
-                
-
-
-
 
                 db.Candidate.Add(candidate);
                 db.SaveChanges();
@@ -62,19 +58,49 @@ namespace PastoralEmpleo.Controllers
         // GET: Inscription/Details/5
         public ActionResult Studies()
         {
-            return View();
+            StudiesInformationViewModel studies = new StudiesInformationViewModel();
+            studies.academicStateList = new SelectList(db.Academicstate.ToList(), "Idacademicstate", "Name", 1);
+            studies.StudyLevelList = new SelectList(db.Studylevel.ToList(), "Idstudylevel", "Name", 1);
+            studies.PeriodicityList = new SelectList(db.Periodicity.ToList(), "Idperiodicity", "Name", 1);
+
+            return View(studies);
         }
 
-        // GET: Inscription/Create
-        public ActionResult Experience()
+        public ActionResult Continuar([Bind("School,Idstudylevel,Obtainedtitle,Idacademicstate,Startdate,Enddate, Idperiodicity")] StudiesInformationViewModel studiesViewModel)
         {
-            return View();
-        }
+            if (ModelState.IsValid)
+            {
+                Studies studie = new Studies();
+
+                studie.School = studiesViewModel.School;
+                studie.Idstudylevel = studiesViewModel.Idstudylevel;
+                studie.Obtainedtitle = studiesViewModel.Obtainedtitle;
+                studie.Idacademicstate = studiesViewModel.Idacademicstate;
+                studie.Startdate = studiesViewModel.Startdate;
+                studie.Enddate = studiesViewModel.Enddate;
+                studie.Idperiodicity = studiesViewModel.Idperiodicity;
+
+                db.Studies.Add(studie);
+                db.SaveChanges();
+                return RedirectToAction("Experience");
+            }
+
+            return View(studiesViewModel);
+        } 
+            
+
+            // GET: Inscription/Create
+            public ActionResult Experience()
+            {
+                return View();
+            }
 
 
-        public ActionResult Document()
-        {
-            return View();
-        }
+            public ActionResult Document()
+            {
+                return View();
+            }
+        
     }
-}
+
+}    

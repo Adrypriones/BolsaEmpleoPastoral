@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using PastoralEmpleo.Shared.Enums;
+
+namespace PastoralEmpleo.ViewModel
+{
+    public class StudiesInformationViewModel
+    {
+        
+        [Display(Name = "Institución")]
+        public string School { get; set; }
+
+        [Display(Name = "Nivel Estudio")]
+        public int Idstudylevel { get; set; }
+        public SelectList StudyLevelList { get; set; }
+
+        [Display(Name = "Título Obtenido")]
+        public string Obtainedtitle { get; set; }        
+
+        [Display(Name = "Estado Acádemico")]
+        public int Idacademicstate { get; set; }
+        public SelectList academicStateList { get; set; }
+
+        [Display(Name = "Fecha Inicio")]
+        public DateTime Startdate { get; set; }
+
+        [Display(Name = "Fecha Finalización")]
+        public DateTime Enddate { get; set; }
+
+        [Display(Name = "Periodicidad")]
+        public int Idperiodicity { get; set; }
+        public SelectList PeriodicityList { get; set; }       
+    }
+}

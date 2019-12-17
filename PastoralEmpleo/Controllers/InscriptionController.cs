@@ -92,14 +92,41 @@ namespace PastoralEmpleo.Controllers
             // GET: Inscription/Create
             public ActionResult Experience()
             {
-                return View();
+            ExperienceInformationViewModel experience = new ExperienceInformationViewModel();
+
+            experience.WorkStatusList = new SelectList(db.Workstatus.ToList(), "Idworkstatus", "Name", 1);
+
+            return View(experience);
             }
 
-
-            public ActionResult Document()
+        public ActionResult Guardarlo([Bind("Companyname,Position,Idworkstatus,initialperiod,endperiod,Inmediateboss,Inmediatechiefnumbre ")] ExperienceInformationViewModel experienceViewModel)
+        {
+            if (ModelState.IsValid)
             {
-                return View();
+                Experience experience = new Experience();
+
+                experience.Companyname = experienceViewModel.Companyname;
+                experience.Endperiod = experienceViewModel.Endperiod;
+                experience.Position = experienceViewModel.Position;
+                experience.Idworkstatus = experienceViewModel.Idworkstatus;
+                experience.Initialperiod = experienceViewModel.initialperiod;
+                experience.Inmediateboss = experienceViewModel.Inmediateboss;
+                experience.Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre;                
+
+                db.Experience.Add(experience);
+                db.SaveChanges();
+                return RedirectToAction("Document");
             }
+
+            return View(experienceViewModel);
+        }
+
+
+
+        public ActionResult Document()
+        {
+                return View();
+        }
         
     }
 

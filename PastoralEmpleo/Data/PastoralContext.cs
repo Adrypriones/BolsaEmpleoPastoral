@@ -429,12 +429,6 @@ namespace PastoralEmpleo.Data
                     .HasColumnName("endperiod")
                     .HasColumnType("date");
 
-                entity.Property(e => e.Functions)
-                    .IsRequired()
-                    .HasColumnName("functions")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Idcandidate)
                     .HasColumnName("idcandidate")
                     .HasColumnType("int(11)");

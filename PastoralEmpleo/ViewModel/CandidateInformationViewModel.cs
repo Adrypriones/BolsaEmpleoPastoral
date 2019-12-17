@@ -12,7 +12,7 @@ namespace PastoralEmpleo.ViewModel
     {
         [Display(Name = "Tipo Documento")]
         public int Iddocumenttype { get; set; }
-        public IEnumerable<SelectListItem>Documenttype{ get; set; }
+        public SelectList DocumenttypeList { get; set; }
 
         [Display(Name = "Documento Identidad")]
         public int Identitydocumento { get; set; }
@@ -31,7 +31,7 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Sexo")]
         public int Idgender { get; set; }
-        public IEnumerable<SelectListItem> Gender { get; set; }
+        public SelectList GenderList { get; set; }
 
         [Display(Name = "Estado Civil")]
         public int Idcivilstatus { get; set; }

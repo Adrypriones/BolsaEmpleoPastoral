@@ -51,8 +51,8 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
                                         @Html.LabelFor(model => model.Iddocumenttype, htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownListFor(model => model.Iddocumenttype, new SelectList(Enum.GetValues(typeof(DocumentType))),
-                                                "", new { @class = "form-control" })
+                                        @Html.DropDownListFor(model => model.Iddocumenttype, Model.DocumenttypeList, "", new { @class = "form-control" })
+
                                     </div>
                                 </div>
 
@@ -92,13 +92,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xs-12 col-sm-6">
+                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
                                         @Html.LabelFor(model => model.Idgender, htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownListFor(model => model.Idgender, new SelectList(Enum.GetValues(typeof(GenderType))),
-                                                "", new { @class = "form-control" })
-                                    </div>
-                                </div>
+                                        @Html.DropDownListFor(model => model.Idgender, Model.GenderList, "", new { @class = "form-control" })
+                                               
+                                   </div>
+                               </div> 
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">

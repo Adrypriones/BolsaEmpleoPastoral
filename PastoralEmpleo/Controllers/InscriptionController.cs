@@ -11,7 +11,7 @@ using PastoralEmpleo.ViewModel;
 
 namespace PastoralEmpleo.Controllers
 {
-    
+
 
     public class InscriptionController : Controller
     {
@@ -22,22 +22,41 @@ namespace PastoralEmpleo.Controllers
         {
             CandidateInformationViewModel candidate = new CandidateInformationViewModel();
             candidate.CivilStatusList = new SelectList(db.Civilstatus.ToList(), "Idcivilstatus", "Name", 1);
+            candidate.GenderList = new SelectList(db.Gender.ToList(), "Idgender", "Name", 1);
+            candidate.DocumenttypeList = new SelectList(db.Documenttype.ToList(), "Iddocumenttype", "Name", 1);
 
             return View(candidate);
         }
 
-        public ActionResult Guardar([Bind("Documenttype,Identitydocumento,Document,Surname,Name,Mail,Gender,Civilstatus,Brithdate,Telephone,Address,Municipality,District")] CandidateInformationViewModel candidate)
+        public ActionResult Guardar([Bind("Iddocumenttype,Identitydocumento,Document,Surname,Name,Mail,Idgender,Idcivilstatus,Brithdate,Telephone,Address,Municipality,District")] CandidateInformationViewModel candidateViewModel)
         {
             if (ModelState.IsValid)
             {
-                var a = candidate;
+                Candidate candidate = new Candidate();
 
-                //db.Candidate.Add(candidate);
-                //db.SaveChanges();
+                candidate.Idcivilstatus = candidateViewModel.Idcivilstatus;
+                candidate.Iddocumenttype = candidateViewModel.Iddocumenttype;
+                candidate.Idgender = candidateViewModel.Idgender;
+                candidate.Name = candidateViewModel.Name;
+                candidate.Surname = candidateViewModel.Surname;
+                candidate.Mail = candidateViewModel.Mail;
+                candidate.Identitydocumento = candidateViewModel.Identitydocumento;
+                candidate.Telephone = candidateViewModel.Telephone;
+                candidate.Address = candidateViewModel.Address;
+                candidate.Brithdate = candidateViewModel.Brithdate;
+                candidate.Municipality = candidateViewModel.Municipality;
+                candidate.District = candidateViewModel.District;
+                
+
+
+
+
+                db.Candidate.Add(candidate);
+                db.SaveChanges();
                 return RedirectToAction("Studies");
             }
-           
-            return View(candidate);
+
+            return View(candidateViewModel);
         }
 
         // GET: Inscription/Details/5

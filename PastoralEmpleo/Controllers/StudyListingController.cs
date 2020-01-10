@@ -12,26 +12,15 @@ using PastoralEmpleo.ViewModel;
 namespace PastoralEmpleo.Controllers
 
 {
-    public class ListController : Controller
+    public class StudyListingController : Controller
     {
         private PastoralContext db = new PastoralContext();
-        // GET: List
-       
 
-        // GET: List/Details/5
-        public ActionResult EmploymentListing()
+        public ActionResult Index()
         {
-            var a = db.Experience.ToList();
-            return View(a);         
-        }      
+            var a = db.Studies.ToList();
 
-
-        // GET: List/Edit/5
-        public ActionResult Edit()
-        {
-            return View();
-        }       
-
-        
+            return View(a);
+        }
     }
 }

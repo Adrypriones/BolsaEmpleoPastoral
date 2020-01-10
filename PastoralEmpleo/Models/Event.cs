@@ -6,7 +6,7 @@ namespace PastoralEmpleo.Models
     public partial class Event
     {
         public int Idevent { get; set; }
-        public int Numeroconvocatoria { get; set; }
+        public int Callnumber { get; set; }
         public string Position { get; set; }
         public DateTime Initialjobetime { get; set; }
         public DateTime Endjobtime { get; set; }
@@ -18,8 +18,8 @@ namespace PastoralEmpleo.Models
         public DateTime Initialeventdate { get; set; }
         public DateTime Endeventdate { get; set; }
         public int? Idstatus { get; set; }
-        public byte[] Description { get; set; }
-        public byte[] Product { get; set; }
+        public string Description { get; set; }
+        public string Product { get; set; }
         public int Vacant { get; set; }
         public string Laboraltime { get; set; }
         public string Place { get; set; }

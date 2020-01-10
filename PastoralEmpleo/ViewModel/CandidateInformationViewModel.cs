@@ -41,7 +41,7 @@ namespace PastoralEmpleo.ViewModel
         public DateTime Brithdate  { get; set; }
 
         [Display(Name = "Teléfono")]
-        public int Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [Display(Name = "Dirección")]
         public string Address { get; set; }

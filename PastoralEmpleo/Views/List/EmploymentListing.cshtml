@@ -1,36 +1,104 @@
-﻿
+﻿@model IEnumerable<PastoralEmpleo.Models.Experience>
 @{
     ViewData["Title"] = "EmploymentListing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section>
-    <div class="container-fluid">
-        <div class="page-header">
-            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Listado Empleo</small></h1>
+
+<body>
+
+    <section>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Listado Empleo</small></h1>
+            </div>
         </div>
-    </div>
-
-    <div>
-
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Empresa</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Cargo</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Estado</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Ingreso</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Salida</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Jefe</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Teléfono</a>
-        <a class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#004D97">Consulte </a>
-        <a href="@Url.Action("Experience", "Inscription")" class="btn btn-success btn-rounded waves-effect waves-light m-b-5" style="color:#004D97">Editar</a>
-        <a href="@Url.Action("Login", "Login")" class="btn btn-danger btn-rounded waves-light m-b-5" style="color:#004D97">Eliminar</a>
-
-    </div>
 
 
-    <div class="text-center">
-        <div class="margin-top: 20px">
-            <input type="submit" value="Guardar" class="btn btn-primary btn-raised btn-sm" />
-        </div>
-    </div>
+        
+        <section>            
 
-</section>
+            <div class="container-fluid">
+                <div class="panel panel-success">
+
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">EMPRESA</th>
+                                        <th class="text-center">CARGO</th>
+                                        <th class="text-center">INGRESO</th>
+                                        <th class="text-center">SALIDA</th>
+                                        <th class="text-center">JEFE</th>
+                                        <th class="text-center">TELÈFONO</th>
+
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Companyname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Position)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Initialperiod)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Endperiod)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Inmediateboss)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Inmediatechiefnumbre)
+                                        </td>
+                                        <td>
+                                            <ul class="breadcrumb breadcrumb-tabs">
+                                                <li>
+                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                        Editar
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-custom btn-rounded small" style="color:#000000">
+                                                        Agregar
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-danger btn-rounded small" style="color:#000000">
+                                                         Eliminar
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </table>
+
+                            
+                                <div class="col-sm-12 text-right">
+                                     <a href="@Url.Action("Studies", "Inscription")" class="text-primary m-l-5"><b>Siguiente</b></a></p>
+                                </div>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+   </section>
+
+</body>
 

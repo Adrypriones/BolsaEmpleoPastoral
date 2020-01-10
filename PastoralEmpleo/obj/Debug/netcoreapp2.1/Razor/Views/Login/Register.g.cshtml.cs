@@ -60,7 +60,7 @@ using PastoralEmpleo.Models;
             WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n\r\n  ");
             EndContext();
             BeginContext(162, 3759, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c7080a0fd78474485d64a958d6722b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "81b7f35ac9bf428999684ac825b7b78b", async() => {
                 BeginContext(168, 432, true);
                 WriteLiteral(@"
 

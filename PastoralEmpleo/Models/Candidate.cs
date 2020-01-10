@@ -12,7 +12,7 @@ namespace PastoralEmpleo.Models
         public string Surname { get; set; }        
         public int Identitydocumento { get; set; }       
         public string Mail { get; set; }        
-        public int Telephone { get; set; }        
+        public string Telephone { get; set; }        
         public string Address { get; set; }       
         public DateTime? Brithdate { get; set; }
         public int? Iduser { get; set; }

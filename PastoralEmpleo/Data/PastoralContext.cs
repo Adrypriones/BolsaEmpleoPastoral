@@ -345,8 +345,8 @@ namespace PastoralEmpleo.Data
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Numeroconvocatoria)
-                    .HasColumnName("numeroconvocatoria")
+                entity.Property(e => e.Callnumber)
+                    .HasColumnName("callnumber")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Observations)

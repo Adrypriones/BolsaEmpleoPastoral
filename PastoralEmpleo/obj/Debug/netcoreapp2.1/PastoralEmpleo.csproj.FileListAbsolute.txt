@@ -51,7 +51,6 @@ C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\bin\Debug\netcoreapp2.1\PastoralEm
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\bin\Debug\netcoreapp2.1\PastoralEmpleo.pdb
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\bin\Debug\netcoreapp2.1\PastoralEmpleo.Views.dll
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\bin\Debug\netcoreapp2.1\PastoralEmpleo.Views.pdb
-C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csprojAssemblyReference.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csproj.CoreCompileInputs.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cs
@@ -70,9 +69,7 @@ C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\View
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Document.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Experience.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Inscription\Studies.g.cshtml.cs
-C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\DocumentListing.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\EmploymentListing.g.cshtml.cs
-C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\List\StudyListing.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\Login.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\Register.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\Login\ResetPassword.g.cshtml.cs
@@ -90,3 +87,6 @@ C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEm
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.dll
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.pdb
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csproj.CopyComplete
+C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csprojAssemblyReference.cache
+C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\DocumentListing\Index.g.cshtml.cs
+C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\StudyListing\Index.g.cshtml.cs

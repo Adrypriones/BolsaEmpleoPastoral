@@ -17,10 +17,10 @@ namespace PastoralEmpleo.ViewModel
         public string Position { get; set; }
 
         [Display(Name = "Iniciación de Jornada")]
-        public DateTime Initialjobetime { get; set; }
+        public TimeSpan Initialjobetime { get; set; }
 
         [Display(Name = "Fin de Jornada")]
-        public DateTime Endjobtime { get; set; }
+        public TimeSpan Endjobtime { get; set; }
 
         [Display(Name = "Formación")]
         public string Study { get; set; }
@@ -68,6 +68,8 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Forma de Pago")]
         public int Idwaytopay { get; set; }
-        public SelectList WayTopayList { get; set; }        
+        public SelectList WayTopayList { get; set; }
+        
+        public int Idevent { get; set; }
     }
 }

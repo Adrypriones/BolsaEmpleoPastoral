@@ -54,7 +54,6 @@ C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\bin\Debug\netcoreapp2.1\PastoralEm
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csproj.CoreCompileInputs.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.RazorAssemblyInfo.cs
-C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.AssemblyInfoInputs.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.AssemblyInfo.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.TagHelpers.input.cache
@@ -90,3 +89,5 @@ C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEm
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\PastoralEmpleo.csprojAssemblyReference.cache
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\DocumentListing\Index.g.cshtml.cs
 C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\StudyListing\Index.g.cshtml.cs
+C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Proyect\BolsaEmpleoPastoral\PastoralEmpleo\obj\Debug\netcoreapp2.1\Razor\Views\CallList\IndexCallList.g.cshtml.cs

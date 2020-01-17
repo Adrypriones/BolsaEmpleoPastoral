@@ -10,7 +10,11 @@ namespace PastoralEmpleo.ViewModel
 {
     public class DocumentRequiredViewModel
     {
+        
         [Display(Name = "Tipo Documento")]
-        public string Documenttipe { get; set; }
+        public int IdrequiredDocument { get; set; }
+        public SelectList RequiredDocumenList { get; set; }
     }
+
+   
 }

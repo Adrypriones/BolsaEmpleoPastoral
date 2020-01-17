@@ -126,17 +126,19 @@ namespace PastoralEmpleo.Controllers
         public ActionResult Document()
         {
             DocumentRequiredViewModel experience = new DocumentRequiredViewModel();
-            
-            return View();
+
+            experience.RequiredDocumenList = new SelectList(db.Requireddocument.ToList(), "IdrequiredDocument", "Name", 1);           
+
+            return View(experience);
         }
 
-        public ActionResult Siguiente([Bind(" Documenttipe ")] DocumentRequiredViewModel documentViewModel)
+        public ActionResult Siguiente([Bind(" IdrequiredDocument ")] DocumentRequiredViewModel documentViewModel)
         {
             if (ModelState.IsValid)
             {
                 Document document = new Document();
 
-                document.Documenttipe = documentViewModel.Documenttipe;                
+                document.Idrequireddocument = documentViewModel.IdrequiredDocument;                
 
                 db.Document.Add(document);
                 db.SaveChanges();

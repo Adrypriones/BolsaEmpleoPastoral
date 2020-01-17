@@ -11,7 +11,7 @@
     <section>
         <div class="container-fluid">
             <div class="page-header">
-                <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Listado Estudios</small></h1>
+                <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small style="color:seagreen" >Listado Estudios</small></h1>
             </div>
         </div>
 
@@ -69,22 +69,18 @@
                                         <td>
                                             <ul class="breadcrumb breadcrumb-tabs">
                                                 <li>
-                                                    <a href="@Url.Action("Studies", "Inscription", new { id=item.Idstudies })" class="btn btn-success btn-rounded" style="color:#000000">
+                                                    <a href="@Url.Action("Studies", "Inscription", new { id=item.Idstudies })" class="btn btn-success btn-rounded " style="color:#000000">
                                                         Editar
                                                     </a>
-                                                </li>
 
-                                                <li>
                                                     <a href="@Url.Action("Studies" , "Inscription", new { id=item.Idstudies })" class="btn btn-custom btn-rounded" style="color:#000000">
                                                         Agregar
                                                     </a>
-                                                </li>
 
-                                                <li>
                                                     <a href="@Url.Action("Studies", "Inscription", new { id=item.Idstudies })" class="btn btn-danger btn-rounded" style="color:#000000">
-                                                        Eliminar
+                                                        Borrar
                                                     </a>
-                                                </li>
+                                                </li>                                              
 
                                             </ul>
 

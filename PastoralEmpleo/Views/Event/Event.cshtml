@@ -1,5 +1,7 @@
 ﻿@model PastoralEmpleo.ViewModel.EventInformationViewModel
 
+
+
 @{
     ViewData["Title"] = "Event";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +10,7 @@
 <section>
     <div class="container-fluid">
         <div class="page-header">
-            <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small>Convocatoria</small></h1>
+            <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small style="color:orange">Convocatoria</small></h1>
         </div>
     </div>
 
@@ -68,7 +70,7 @@
                                 <div class="form-group label-floating">
                                     @Html.LabelFor(model => model.Product, htmlAttributes: new { @class = "control-label" })
                                     @Html.TextAreaFor(model => model.Product, new { @class = "form-control" })
-                                   
+
                                 </div>
                             </div>
 
@@ -132,14 +134,14 @@
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
                                     @Html.LabelFor(model => model.Initialjobetime, htmlAttributes: new { @class = "control-label" })
-                                    @Html.TextBoxFor(model => model.Initialjobetime, new { @class = "form-control", required = "required", @type = "Date" })
+                                    @Html.TextBoxFor(model => model.Initialjobetime, new { @class = "form-control", required = "required", @type = "Time" })
                                 </div>
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
                                     @Html.LabelFor(model => model.Endjobtime, htmlAttributes: new { @class = "control-label" })
-                                    @Html.TextBoxFor(model => model.Endjobtime, new { @class = "form-control" , required = "required", @type = "Date" })
+                                    @Html.TextBoxFor(model => model.Endjobtime, new { @class = "form-control", required = "required", @type = "Time" })
                                 </div>
                             </div>
 
@@ -147,16 +149,15 @@
                                 <div class="form-group label-floating">
                                     @Html.LabelFor(model => model.Functions, htmlAttributes: new { @class = "control-label" })
                                     @Html.TextAreaFor(model => model.Functions, new { @class = "form-control" })
-                                    
+
                                 </div>
                             </div>
-
 
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group label-floating">
                                     @Html.LabelFor(model => model.Observations, htmlAttributes: new { @class = "control-label" })
                                     @Html.TextAreaFor(model => model.Observations, new { @class = "form-control" })
-                                    
+
                                 </div>
                             </div>
 
@@ -164,7 +165,7 @@
 
                     </div>
 
-               </fieldset>
+                </fieldset>
 
                 <div class="text-center">
                     <div class="margin-top: 20px">
@@ -172,18 +173,20 @@
                     </div>
                 </div>
 
-                <div class="text-right">
-                    <div class="margin-top: 20px">
-                        <input type="submit" value="Eliminar" class="btn btn-danger btn-bordred btn-sm" />
-                    </div>
-                </div>
 
+
+                <div class="text-right">
+                    <a href="@Url.Action("Imprimir", "Event")" class="btn btn-outline-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
+                        Imprimir
+                    </a>
+
+                    <a href="@Url.Action("IndexCallList", "CallList")" button type="button" class="btn btn-outline-primary btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff">
+                    Convocatoria</a>
+                </div>
+                
             }
 
-       </div>
-  </div>
-
-
-
+        </div>
+    </div>
 
 </section>

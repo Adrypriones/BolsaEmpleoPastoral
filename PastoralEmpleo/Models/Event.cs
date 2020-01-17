@@ -8,8 +8,8 @@ namespace PastoralEmpleo.Models
         public int Idevent { get; set; }
         public int Callnumber { get; set; }
         public string Position { get; set; }
-        public DateTime Initialjobetime { get; set; }
-        public DateTime Endjobtime { get; set; }
+        public TimeSpan Initialjobetime { get; set; }
+        public TimeSpan Endjobtime { get; set; }
         public string Study { get; set; }
         public string Experience { get; set; }
         public string Functions { get; set; }

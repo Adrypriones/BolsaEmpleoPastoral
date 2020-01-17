@@ -1,0 +1,153 @@
+﻿@model IEnumerable<PastoralEmpleo.Models.Event>
+@{
+    ViewData["Title"] = "IndexCallList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+
+    <section>
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw" ></i> <small style="color:#004D97">Listado Convocatoria</small></h1>
+            </div>
+        </div>
+
+        <form class="app-search">
+            <input type="text" placeholder="Buscar..."
+                   class="form-control">
+            <button type="submit"></button>
+        </form>
+
+        <section>
+
+            <div class="container-fluid">
+                <div class="panel panel-success">
+
+                    <div class="panel-success" style="overflow-x:auto; width:1080px">
+
+                        <div class="panel-body">
+                            <div class="table-responsive">
+
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">CONVOCATORIA NÚMERO</th>
+                                            <th class="text-center">INICIO DE CONVOCATORIA</th>
+                                            <th class="text-center">CIERRE DE CONVOCATORIA</th>
+                                            <th class="text-center">CARGO</th>
+                                            <th class="text-center">DESCRIPCIÓN</th>
+                                            <th class="text-center">PRODUCTO</th>
+                                            <th class="text-center">ESTUDIO</th>
+                                            <th class="text-center">EXPERIENCIA</th>
+                                            <th class="text-center">VACANTE</th>
+                                            <th class="text-center">TIPO CONTRATO</th>
+                                            <th class="text-center">TIEMPO LABORAL</th>
+                                            <th class="text-center">LUGAR</th>
+                                            <th class="text-center">SALARIO</th>
+                                            <th class="text-center">PAGO</th>
+                                            <th class="text-center">INICIO JORNADA</th>
+                                            <th class="text-center">FIN JORNADA</th>
+                                            <th class="text-center">FUNCIONES</th>
+                                            <th class="text-center">OBSERVACIONES</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Callnumber)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Initialeventdate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Endeventdate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Position)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Product)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Study)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Experience)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Vacant)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Idcontracttype)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Laboraltime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Place)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Salary)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.IdwaytopayNavigation)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Initialjobetime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Endjobtime)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Functions)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Observations)
+                                            </td>
+
+                                            <td>
+                                                <ul class="breadcrumb breadcrumb-tabs">
+                                                    <li>
+                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                            Editar
+                                                        </a>
+
+                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-custom btn-rounded small" style="color:#000000">
+                                                            Agregar
+                                                        </a>
+
+                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-danger btn-rounded small" style="color:#000000">
+                                                            Eliminar
+                                                        </a>
+
+                                                    </li>
+
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </section>
+
+</body>
+

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using PastoralEmpleo.Models;
 
 namespace PastoralEmpleo.Data
@@ -297,7 +298,8 @@ namespace PastoralEmpleo.Data
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasColumnName("description")
-                    .HasColumnType("blob");
+                    .HasMaxLength(2000)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Endeventdate)
                     .HasColumnName("endeventdate")
@@ -305,7 +307,7 @@ namespace PastoralEmpleo.Data
 
                 entity.Property(e => e.Endjobtime)
                     .HasColumnName("endjobtime")
-                    .HasColumnType("date");
+                    .HasColumnType("Time");
 
                 entity.Property(e => e.Experience)
                     .IsRequired()
@@ -337,7 +339,7 @@ namespace PastoralEmpleo.Data
 
                 entity.Property(e => e.Initialjobetime)
                     .HasColumnName("initialjobetime")
-                    .HasColumnType("date");
+                    .HasColumnType("Time");
 
                 entity.Property(e => e.Laboraltime)
                     .IsRequired()
@@ -370,7 +372,8 @@ namespace PastoralEmpleo.Data
                 entity.Property(e => e.Product)
                     .IsRequired()
                     .HasColumnName("product")
-                    .HasColumnType("blob");
+                    .HasMaxLength(2000)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Salary)
                     .HasColumnName("salary")

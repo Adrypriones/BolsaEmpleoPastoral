@@ -10,16 +10,17 @@ using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
 
 namespace PastoralEmpleo.Controllers
-
 {
-    public class StudyListingController : Controller
+    public class CallListController : Controller
     {
         private PastoralContext db = new PastoralContext();
-
-        public ActionResult Index()
+        
+        public ActionResult IndexCallList()
         {
-            var a = db.Studies.ToList();
+            var a = db.Event.ToList();
             return View(a);
         }
+
+        
     }
 }

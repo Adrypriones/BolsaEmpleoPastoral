@@ -1,4 +1,4 @@
-﻿@model PastoralEmpleo.ViewModel.DocumentRequiredViewModel
+﻿@model PastoralEmpleo.ViewModel.OtherDocumentsViewModel
 
 @{
     ViewData["Title"] = "Document";
@@ -50,8 +50,8 @@
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.IdrequiredDocument, htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownListFor(model => model.IdrequiredDocument, Model.RequiredDocumenList, "", new { @class = "form-control" })
+                                        @Html.LabelFor(model => model.Iddocumenttype, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Iddocumenttype, Model.DocumentTypeList, "", new { @class = "form-control" })
 
                                     </div>
                                 </div>

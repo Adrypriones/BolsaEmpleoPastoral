@@ -24,8 +24,7 @@ namespace PastoralEmpleo.Data
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Periodicity> Periodicity { get; set; }
-        public virtual DbSet<Requireddocument> Requireddocument { get; set; }
+        public virtual DbSet<Periodicity> Periodicity { get; set; }       
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Studies> Studies { get; set; }
         public virtual DbSet<Studylevel> Studylevel { get; set; }
@@ -221,31 +220,25 @@ namespace PastoralEmpleo.Data
                     .HasName("idcandidate_UNIQUE")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Idrequireddocument)
+                entity.HasIndex(e => e.Iddocumenttype)
                     .HasName("iddocument_requireddocument_id");
 
                 entity.Property(e => e.Iddocument)
                     .HasColumnName("iddocument")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.Documenttipe)
-                    .IsRequired()
-                    .HasColumnName("documenttipe")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasColumnType("int(11)");                
 
                 entity.Property(e => e.Idcandidate)
                     .HasColumnName("idcandidate")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.Idrequireddocument)
-                    .HasColumnName("idrequireddocument")
+                entity.Property(e => e.Iddocumenttype)
+                    .HasColumnName("iddocumenttype")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Url)
                     .IsRequired()
                     .HasColumnName("url")
-                    .HasMaxLength(50)
+                    .HasMaxLength(256)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdcandidateNavigation)
@@ -253,10 +246,10 @@ namespace PastoralEmpleo.Data
                     .HasForeignKey<Document>(d => d.Idcandidate)
                     .HasConstraintName("fk_document_candidate_id");
 
-                entity.HasOne(d => d.IdrequireddocumentNavigation)
+                entity.HasOne(d => d.IddocumenttypeNavigation)
                     .WithMany(p => p.Document)
-                    .HasForeignKey(d => d.Idrequireddocument)
-                    .HasConstraintName("fk_document_requireddocument_id");
+                    .HasForeignKey(d => d.Iddocumenttype)
+                    .HasConstraintName("fk_document_documenttype_id");
             });
 
             modelBuilder.Entity<Documenttype>(entity =>
@@ -272,8 +265,12 @@ namespace PastoralEmpleo.Data
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name")
-                    .HasMaxLength(17)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.SubType)
+                    .HasColumnName("subtype")
+                    .HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<Event>(entity =>
@@ -505,24 +502,7 @@ namespace PastoralEmpleo.Data
                     .HasColumnName("name")
                     .HasMaxLength(10)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Requireddocument>(entity =>
-            {
-                entity.HasKey(e => e.IdrequiredDocument);
-
-                entity.ToTable("requireddocument", "announcement");
-
-                entity.Property(e => e.IdrequiredDocument)
-                    .HasColumnName("idrequired document")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasColumnName("name")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
+            });            
 
             modelBuilder.Entity<Status>(entity =>
             {

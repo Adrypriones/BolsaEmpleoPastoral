@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
+using System.IO;
+using System.Linq;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -23,15 +20,20 @@ namespace PastoralEmpleo.Controllers
             CandidateInformationViewModel candidate = new CandidateInformationViewModel();
             candidate.CivilStatusList = new SelectList(db.Civilstatus.ToList(), "Idcivilstatus", "Name", 1);
             candidate.GenderList = new SelectList(db.Gender.ToList(), "Idgender", "Name", 1);
-            candidate.DocumenttypeList = new SelectList(db.Documenttype.ToList(), "Iddocumenttype", "Name", 1);
+            candidate.DocumenttypeList = new SelectList(db.Documenttype.Where(d => d.SubType == 1).ToList(), "Iddocumenttype", "Name", 1);
 
             return View(candidate);
         }
 
-        public ActionResult Guardar([Bind("Iddocumenttype,Identitydocumento,Document,Surname,Name,Mail,Idgender,Idcivilstatus,Brithdate,Telephone,Address,Municipality,District")] CandidateInformationViewModel candidateViewModel)
+        public ActionResult Guardar(CandidateInformationViewModel candidateViewModel)
         {
             if (ModelState.IsValid)
             {
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                var fileName = Path.GetFileName(candidateViewModel.File.FileName);
+                var filePath = Path.Combine(uploads, fileName);
+                candidateViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
+
                 Candidate candidate = new Candidate();
 
                 candidate.Idcivilstatus = candidateViewModel.Idcivilstatus;
@@ -49,6 +51,18 @@ namespace PastoralEmpleo.Controllers
 
                 db.Candidate.Add(candidate);
                 db.SaveChanges();
+
+                Document document = new Document
+                {  
+                    Idcandidate = candidate.Idcandidate,
+                    Url = filePath,
+                    Iddocumenttype = candidateViewModel.Iddocumenttype
+                };
+
+                db.Document.Add(document);
+                db.SaveChanges();
+
+
                 return RedirectToAction("Studies");
             }
 
@@ -86,18 +100,18 @@ namespace PastoralEmpleo.Controllers
             }
 
             return View(studiesViewModel);
-        } 
-            
+        }
 
-            // GET: Inscription/Create
-            public ActionResult Experience()
-            {
+
+        // GET: Inscription/Create
+        public ActionResult Experience()
+        {
             ExperienceInformationViewModel experience = new ExperienceInformationViewModel();
 
             experience.WorkStatusList = new SelectList(db.Workstatus.ToList(), "Idworkstatus", "Name", 1);
 
             return View(experience);
-            }
+        }
 
         public ActionResult Guardarlo([Bind("Companyname,Position,Idworkstatus,initialperiod,endperiod,Inmediateboss,Inmediatechiefnumbre ")] ExperienceInformationViewModel experienceViewModel)
         {
@@ -111,7 +125,7 @@ namespace PastoralEmpleo.Controllers
                 experience.Idworkstatus = experienceViewModel.Idworkstatus;
                 experience.Initialperiod = experienceViewModel.initialperiod;
                 experience.Inmediateboss = experienceViewModel.Inmediateboss;
-                experience.Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre;                
+                experience.Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre;
 
                 db.Experience.Add(experience);
                 db.SaveChanges();
@@ -125,20 +139,20 @@ namespace PastoralEmpleo.Controllers
 
         public ActionResult Document()
         {
-            DocumentRequiredViewModel experience = new DocumentRequiredViewModel();
+            OtherDocumentsViewModel experience = new OtherDocumentsViewModel();
 
-            experience.RequiredDocumenList = new SelectList(db.Requireddocument.ToList(), "IdrequiredDocument", "Name", 1);           
+            experience.DocumentTypeList = new SelectList(db.Documenttype.Where(d => d.SubType == 2).ToList(), "Iddocumenttype", "Name", 1);
 
             return View(experience);
         }
 
-        public ActionResult Siguiente([Bind(" IdrequiredDocument ")] DocumentRequiredViewModel documentViewModel)
+        public ActionResult Siguiente([Bind(" IdrequiredDocument ")] OtherDocumentsViewModel documentViewModel)
         {
             if (ModelState.IsValid)
             {
                 Document document = new Document();
 
-                document.Idrequireddocument = documentViewModel.IdrequiredDocument;                
+                document.Iddocumenttype = documentViewModel.Iddocumenttype;
 
                 db.Document.Add(document);
                 db.SaveChanges();
@@ -151,4 +165,4 @@ namespace PastoralEmpleo.Controllers
 
     }
 
-}    
+}

@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="uploads\" />
     <Folder Include="PdfConvocatoria\" />
   </ItemGroup>
 

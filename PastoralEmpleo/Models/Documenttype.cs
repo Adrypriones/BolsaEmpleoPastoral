@@ -12,7 +12,9 @@ namespace PastoralEmpleo.Models
 
         public int Iddocumenttype { get; set; }
         public string Name { get; set; }
+        public int SubType { get; set; }
 
         public ICollection<Candidate> Candidate { get; set; }
+        public ICollection<Document> Document { get; set; }
     }
 }

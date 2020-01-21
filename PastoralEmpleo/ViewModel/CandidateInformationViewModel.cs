@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using PastoralEmpleo.Shared.Enums;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PastoralEmpleo.ViewModel
 {
@@ -17,8 +14,10 @@ namespace PastoralEmpleo.ViewModel
         [Display(Name = "Documento Identidad")]
         public int Identitydocumento { get; set; }
 
-        [Display(Name = "Ajuntar Documento")]
-        public string Documenttipe { get; set; }
+        [Display(Name = "Adjunta Documento")]
+        public string FilePath { get; set; }
+
+        public IFormFile File { get; set; }
 
         [Display(Name = "Apellido")]
         public string Surname { get; set; }
@@ -51,5 +50,8 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Barrio")]
         public string District { get; set; }
+
+        public int IdrequiIdrequireddocument { get; set; }       
+
     }
 }

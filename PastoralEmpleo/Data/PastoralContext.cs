@@ -221,7 +221,7 @@ namespace PastoralEmpleo.Data
                     .IsUnique();
 
                 entity.HasIndex(e => e.Iddocumenttype)
-                    .HasName("iddocument_requireddocument_id");
+                    .HasName("iddocument_documenttype_id_idx");
 
                 entity.Property(e => e.Iddocument)
                     .HasColumnName("iddocument")
@@ -301,6 +301,11 @@ namespace PastoralEmpleo.Data
                 entity.Property(e => e.Endeventdate)
                     .HasColumnName("endeventdate")
                     .HasColumnType("date");
+
+                entity.Property(e => e.Url)
+                    .HasColumnName("url")
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Endjobtime)
                     .HasColumnName("endjobtime")
@@ -433,6 +438,10 @@ namespace PastoralEmpleo.Data
                     .HasColumnName("idcandidate")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Iddocumenttype)
+                    .HasColumnName("iddocumenttype")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.Idworkstatus)
                     .HasColumnName("idworkstatus")
                     .HasColumnType("int(11)");
@@ -463,7 +472,7 @@ namespace PastoralEmpleo.Data
                     .WithOne(p => p.Experience)
                     .HasForeignKey<Experience>(d => d.Idcandidate)
                     .HasConstraintName("fk_experience_candidate_id");
-
+                
                 entity.HasOne(d => d.IdworkstatusNavigation)
                     .WithMany(p => p.Experience)
                     .HasForeignKey(d => d.Idworkstatus)
@@ -539,6 +548,9 @@ namespace PastoralEmpleo.Data
 
                 entity.HasIndex(e => e.Idstudylevel)
                     .HasName("fk_studies_studylevel_id_idx");
+
+                entity.HasIndex(e => e.Iddocumenttype)
+                    .HasName("fk_studies_documenttype_idx");
 
                 entity.Property(e => e.Idstudies)
                     .HasColumnName("idstudies")

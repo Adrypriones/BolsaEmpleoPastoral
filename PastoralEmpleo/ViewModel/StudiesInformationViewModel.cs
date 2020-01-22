@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,11 @@ namespace PastoralEmpleo.ViewModel
         
         [Display(Name = "Institución")]
         public string School { get; set; }
+
+        [Display(Name = "Adjunte Certificado ò Tìtulo")]
+        public string FilePath { get; set; }
+
+        public IFormFile File { get; set; }
 
         [Display(Name = "Nivel Estudio")]
         public int Idstudylevel { get; set; }
@@ -29,6 +35,9 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Periodicidad")]
         public int Idperiodicity { get; set; }
-        public SelectList PeriodicityList { get; set; }       
+        public SelectList PeriodicityList { get; set; }
+
+           
+
     }
 }

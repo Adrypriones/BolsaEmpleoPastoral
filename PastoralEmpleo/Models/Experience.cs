@@ -14,8 +14,10 @@ namespace PastoralEmpleo.Models
         public int? Idcandidate { get; set; }
         public string Inmediateboss { get; set; }
         public string Inmediatechiefnumbre { get; set; }
+        public int? Iddocumenttype { get; set; }
 
         public Candidate IdcandidateNavigation { get; set; }
         public Workstatus IdworkstatusNavigation { get; set; }
+        public Documenttype IddocumenttypeNavigation { get; set; }
     }
 }

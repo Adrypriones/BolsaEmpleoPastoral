@@ -2,7 +2,7 @@
 @model PastoralEmpleo.ViewModel.StudiesInformationViewModel
 
 @{
-    ViewData["Title"] = "Studies";
+    ViewData["Title"] = "IndexStudies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -16,15 +16,15 @@
         </div>
 
         <div class="col-xs-12 col-sm-3">
-            <a href="@Url.Action("Studies", "Inscription")" class="btn btn-success" style="color:#004D97"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; FORMACIÓN</a>
+            <a href="@Url.Action("IndexStudies", "Studies")" class="btn btn-success" style="color:#004D97"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; FORMACIÓN</a>
         </div>
 
         <div class="col-xs-12 col-sm-3">
-            <a href="@Url.Action("Experience", "Inscription")" class="btn btn-primary" style="color:#004D97"><i class="zmdi zmdi-search"></i> &nbsp; EXPERIENCIA</a>
+            <a href="@Url.Action("IndexExperience", "Experience")" class="btn btn-primary" style="color:#004D97"><i class="zmdi zmdi-search"></i> &nbsp; EXPERIENCIA</a>
         </div>
 
         <div class="col-xs-12 col-sm-3">
-            <a href="@Url.Action("Document", "Inscription")" class="btn btn-danger" style="color:#004D97"><i class="zmdi zmdi-comment-list"></i> &nbsp; OTROS DOCUMENTOS</a>
+            <a href="@Url.Action("IndexDocument", "Document")" class="btn btn-danger" style="color:#004D97"><i class="zmdi zmdi-comment-list"></i> &nbsp; OTROS DOCUMENTOS</a>
         </div>
 
         <div class="container-fluid">
@@ -33,20 +33,16 @@
             </div>
         </div>
 
-
-
+        
         <div class="container-fluid">
             <div class="panel panel-info">
 
-                @using (Html.BeginForm("Continuar", "Inscription", FormMethod.Post))
+                @using (Html.BeginForm("Guardar", "Studies", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-
                     @Html.AntiForgeryToken()
 
                     <fieldset>
-
-
-
+                                               
                         <div class="container-fluid">
                             <div class="row">
 
@@ -97,12 +93,12 @@
                                         @Html.LabelFor(model => model.Idperiodicity, htmlAttributes: new { @class = "control-label" })
                                         @Html.DropDownListFor(model => model.Idperiodicity, Model.PeriodicityList, "", new { @class = "form-control" })
                                     </div>
-                                </div>
+                                </div>                                
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        <label for="Document">Adjuntar Titulo ó Certificación</label>
-                                        <input type="file" class="form-control">
+                                        @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label" })
+                                        <input type="file" name="File" class="form-control" required>
                                     </div>
                                 </div>
 
@@ -112,7 +108,7 @@
 
                     <div class="text-center">
                         <div class="margin-top: 20px">
-                            <input type="submit" value="Continuar" class="btn btn-primary btn-bordred btn-sm" />
+                            <input type="submit" value="Guardar" class="btn btn-primary btn-bordred btn-sm" />
                         </div>
                     </div>
 

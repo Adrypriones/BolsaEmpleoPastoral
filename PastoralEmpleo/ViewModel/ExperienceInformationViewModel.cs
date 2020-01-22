@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
-
 
 namespace PastoralEmpleo.ViewModel
 {
@@ -28,5 +28,10 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Contacto Jefe")]
         public string Inmediatechiefnumbre { get; set; }
+
+        [Display(Name = "Adjunte Certificado")]
+        public string FilePath { get; set; }
+
+        public IFormFile File { get; set; }
     }
 }

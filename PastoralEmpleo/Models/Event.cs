@@ -25,6 +25,7 @@ namespace PastoralEmpleo.Models
         public string Place { get; set; }
         public int? Idcontracttype { get; set; }
         public int? Idwaytopay { get; set; }
+        public string Url { get; set; }
 
         public Contracttype IdcontracttypeNavigation { get; set; }
         public Status IdstatusNavigation { get; set; }

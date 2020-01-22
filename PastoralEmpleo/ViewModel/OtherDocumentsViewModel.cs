@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.ComponentModel.DataAnnotations;
+
 
 namespace PastoralEmpleo.ViewModel
 {
@@ -9,6 +12,11 @@ namespace PastoralEmpleo.ViewModel
         [Display(Name = "Tipo Documento")]
         public int Iddocumenttype { get; set; }
         public SelectList DocumentTypeList { get; set; }
+
+        [Display(Name = "Adjunta Documento")]
+        public string FilePath { get; set; }
+
+        public IFormFile File { get; set; }
     }
 
    

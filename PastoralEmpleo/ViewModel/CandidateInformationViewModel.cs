@@ -49,9 +49,7 @@ namespace PastoralEmpleo.ViewModel
         public string Municipality { get; set; }
 
         [Display(Name = "Barrio")]
-        public string District { get; set; }
-
-        public int IdrequiIdrequireddocument { get; set; }       
+        public string District { get; set; }        
 
     }
 }

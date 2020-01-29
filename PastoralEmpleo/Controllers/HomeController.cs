@@ -1,32 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PastoralEmpleo.Data;
-using PastoralEmpleo.Models;
+using PastoralEmpleo.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PastoralEmpleo.Controllers
 {
     public class HomeController : Controller
     {
+        private PastoralContext db = new PastoralContext();
+
         public IActionResult Index()
         {
-            using (PastoralContext db = new PastoralContext())
+            List<IndexConvocatoriaViewModel> convocatoria = new List<IndexConvocatoriaViewModel>();
+
+            var eventList = db.Event.Where(e => e.Initialeventdate < DateTime.Now && e.Endeventdate > DateTime.Now).ToList();
+
+            foreach (Models.Event eve in eventList)
             {
-                foreach (Gender gender in db.Gender.ToList())
+                convocatoria.Add(new IndexConvocatoriaViewModel
                 {
-                    Console.WriteLine($"{gender.Name}");
-                }
+                    Url = $"{eve.Url}",
+                    Position = eve.Position
+                });                
             }
 
-            return View();
-        }
-
-        public IActionResult Abaut()
-        {
-           return View();
+            return View(convocatoria);
         }
 
         public IActionResult Contact()
@@ -34,17 +34,6 @@ namespace PastoralEmpleo.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

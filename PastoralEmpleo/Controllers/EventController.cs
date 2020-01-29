@@ -74,7 +74,7 @@ namespace PastoralEmpleo.Controllers
 
             var fileName = $"{evento.Position}.pdf";
 
-            using (FileStream fileStream = new FileStream($"{path}/PdfConvocatoria/{fileName}", FileMode.Create))
+            using (FileStream fileStream = new FileStream($"{path}\\wwwroot\\PdfConvocatoria\\{fileName}", FileMode.Create))
             {
                 PdfWriter.GetInstance(doc, fileStream);
                 doc.Open();
@@ -128,7 +128,7 @@ namespace PastoralEmpleo.Controllers
 
                 doc.Close();
 
-                evento.Url = $"{path}/PdfConvocatoria/{fileName}";
+                evento.Url = $"\\PdfConvocatoria\\{fileName}";
                 db.Event.Update(evento);
                 db.SaveChanges();
             }

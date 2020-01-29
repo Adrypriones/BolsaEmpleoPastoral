@@ -35,9 +35,7 @@ namespace PastoralEmpleo.ViewModel
 
         [Display(Name = "Periodicidad")]
         public int Idperiodicity { get; set; }
-        public SelectList PeriodicityList { get; set; }
-
-           
+        public SelectList PeriodicityList { get; set; }       
 
     }
 }

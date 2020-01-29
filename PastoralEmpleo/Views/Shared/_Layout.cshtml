@@ -1,102 +1,29 @@
-﻿@*<!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - PastoralEmpleo</title>
-
-        <environment include="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-            <link rel="stylesheet" href="~/css/site.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">PastoralEmpleo</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-
-        <partial name="_CookieConsentPartial" />
-
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; 2019 - PastoralEmpleo</p>
-            </footer>
-        </div>
-
-        <environment include="Development">
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment exclude="Development">
-            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                    asp-fallback-test="window.jQuery"
-                    crossorigin="anonymous"
-                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-            </script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                    crossorigin="anonymous"
-                    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-            </script>
-            <script src="~/js/site.min.js" asp-append-version="true"></script>
-        </environment>
-
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>*@
-
+﻿
 
 <!DOCTYPE html>
  <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-    <meta name="author" content="Coderthemes">
+ <head>
+     <script src="https://kit.fontawesome.com/4f0148de5d.js" crossorigin="anonymous"></script>
 
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+     <meta name="author" content="Coderthemes">
 
-    <title>@ViewData["Title"] - PastoralEmpleo</title>
+     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+     <title>@ViewData["Title"] - PastoralEmpleo</title>
 
-    <!-- App css -->
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="~/css/icons.css" rel="stylesheet" type="text/css"/>
-    <link href="~/css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="~/lib/modernizr/modernizr.min.js"></script>
+     <!--Morris Chart CSS -->
+     <link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
-  </head>
+     <!-- App css -->
+     <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+     <link href="~/css/icons.css" rel="stylesheet" type="text/css" />
+     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+     <script src="~/lib/modernizr/modernizr.min.js"></script>
+
+ </head>
 
   <body class="fixed-left">
 
@@ -180,30 +107,30 @@
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <ul>
-                        <li class="text-muted menu-title" style="color:#000000">BIENVENIDO</li>
+                        <li class="text-muted menu-title" style="color:#000000"><i class="fas fa-cloud-sun"></i>BIENVENIDO</li>
 
                         <li>
-                            <a href="@Url.Action("Contact", "Home")" style="color:#004D97" ><i class="mdi mdi-view-dashboard" ></i> <span> Panel de Control</span> </a>
+                            <a href="@Url.Action("Contact", "Home")" style="color:#004D97" ><i class="fas fa-chalkboard"></i><span> Panel de Control</span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("Candidate", "Inscription")" class="waves-effect" style="color:#004D97"><i class="mdi mdi-view-dashboard"></i> <span> Datos Personales </span> </a>
+                            <a href="@Url.Action("Candidate", "Inscription")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-edit"></i><span> Datos Personales</span></a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexStudies", "Studies")" class="waves-effect" style="color:#004D97"><i class="mdi mdi-view-dashboard"></i> <span> Académicos </span> </a>
+                            <a href="@Url.Action("IndexStudies", "Studies")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-graduate"></i><span> Académicos </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexExperience", "Experience")" class="waves-effect" style="color:#004D97"><i class="mdi mdi-view-dashboard"></i> <span> Experiencia Laboral </span> </a>
+                            <a href="@Url.Action("IndexExperience", "Experience")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-tie"></i><span> Experiencia Laboral </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexDocument", "Document")" class="waves-effect" style="color:#004D97"><i class="mdi mdi-view-dashboard"></i> <span> Otros Documentos </span> </a>
+                            <a href="@Url.Action("IndexDocument", "Document")" class="waves-effect" style="color:#004D97"><i class="fas fa-file"></i><span> Otros Documentos </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("Event", "Event")" style="color:#004D97"><i class="mdi mdi-view-dashboard"></i> <span> Convocatoria </span> </a>
+                            <a href="@Url.Action("Event", "Event")" style="color:#004D97"><i class="fas fa-user-friends"></i><span> Convocatoria </span> </a>
                         </li>
                         
                               

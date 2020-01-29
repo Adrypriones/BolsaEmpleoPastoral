@@ -5,6 +5,9 @@ using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
 using System.IO;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using PastoralEmpleo.Shared.Enum;
+
 
 
 
@@ -30,7 +33,7 @@ namespace PastoralEmpleo.Controllers
             if (ModelState.IsValid)
             {
 
-                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(experienceViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
                 experienceViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
@@ -44,21 +47,22 @@ namespace PastoralEmpleo.Controllers
                 experience.Initialperiod = experienceViewModel.initialperiod;
                 experience.Inmediateboss = experienceViewModel.Inmediateboss;
                 experience.Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre;
+                experience.Idcandidate = HttpContext.Session.GetInt32("IdUser");
 
                 db.Experience.Add(experience);
                 db.SaveChanges();
 
                 Document document = new Document
                 {
-                    Idcandidate = experience.Idcandidate,
+                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
                     Url = filePath,
-                    Iddocumenttype = experience.Iddocumenttype
+                    Iddocumenttype = (int)DocumentTypeEnum.CartaLaboral,
                 };
 
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction("Document" , "Inscription");
+                return RedirectToAction("IndexDocument" , "Document");
             }
 
             return View(experienceViewModel);

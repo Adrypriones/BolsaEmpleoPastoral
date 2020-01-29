@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
@@ -26,21 +27,14 @@ namespace PastoralEmpleo.Controllers
             if (ModelState.IsValid)
             {
 
-                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(documentViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
-                documentViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
+                documentViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));                
 
-                Document document = new Document();
-
-                document.Iddocumenttype = documentViewModel.Iddocumenttype;
-
-                db.Document.Add(document);
-                db.SaveChanges();
-
-                Document doc = new Document
+                Document document = new Document
                 {
-                    Idcandidate = document.Idcandidate,
+                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
                     Url = filePath,
                     Iddocumenttype = documentViewModel.Iddocumenttype
                 };

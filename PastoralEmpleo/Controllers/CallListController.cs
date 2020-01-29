@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PastoralEmpleo.Data;
+using PastoralEmpleo.Models;
+using PastoralEmpleo.ViewModel;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -9,10 +12,14 @@ namespace PastoralEmpleo.Controllers
     {
         private PastoralContext db = new PastoralContext();
 
-        public ActionResult IndexCallList()
+        public ActionResult IndexCallList(List<Event> events)
         {
-            var a = db.Event.ToList();
-            return View(a);
+            if (!events.Any())
+            {
+                events = db.Event.ToList();
+            }
+
+            return View(events);
         }
 
         public ActionResult Imprimir(int id)
@@ -22,8 +29,32 @@ namespace PastoralEmpleo.Controllers
             string path = evento.Url;
             var fileName = Path.GetFileNameWithoutExtension(path);
 
-            var stream = new FileStream(path, FileMode.Open);
+            var stream = new FileStream($".\\wwwroot\\{path}", FileMode.Open);
             return File(stream, "application/pdf", fileName);
+        }
+
+        public ActionResult Buscar([Bind("Position")] SearchCallViewModel searchCallViewModel)
+        {
+            var restult = db.Event.Where(e => e.Position.Contains(searchCallViewModel.Position)).ToList();
+
+            if (restult == null)
+            {
+                TempData["Error"] = "CARGO NO ENCONTRADO";
+
+                return RedirectToAction("IndexSearchCall");
+            }
+
+            return RedirectToAction("IndexCallList", restult);
+        }
+
+        public ActionResult IndexSearchCall()
+        {
+            if (TempData["Error"] != null && !string.IsNullOrEmpty(TempData["Error"].ToString()))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
+
+            return View();
         }
     }
 }

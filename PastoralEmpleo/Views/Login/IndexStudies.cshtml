@@ -1,8 +1,11 @@
-﻿@model PastoralEmpleo.ViewModel.ExperienceInformationViewModel
+﻿
+@model PastoralEmpleo.ViewModel.StudiesInformationViewModel
+
 @{
-    ViewData["Title"] = "Experience";
+    ViewData["Title"] = "IndexStudies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <section>
 
@@ -30,71 +33,69 @@
 
         <div class="container-fluid">
             <div class="page-header">
-                <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small style="color:mediumblue">Experiencia Laboral</small></h1>
+                <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small style="color:seagreen">Académicos</small></h1>
             </div>
         </div>
-
 
 
         <div class="container-fluid">
             <div class="panel panel-info">
 
-                @using (Html.BeginForm("Guardar", "Experience", FormMethod.Post , new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Guardar", "Studies", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-
                     @Html.AntiForgeryToken()
 
                     <fieldset>
-
-
 
                         <div class="container-fluid">
                             <div class="row">
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Companyname, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Companyname, new { @class = "form-control" })
+                                        @Html.LabelFor(model => model.School, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.School, new { @class = "form-control" })
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Position, new { @class = "form-control" })
+                                        @Html.LabelFor(model => model.Idstudylevel, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Idstudylevel, Model.StudyLevelList, "", new { @class = "form-control" })
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Idworkstatus, htmlAttributes: new { @class = "control-label" })
-                                        @Html.DropDownListFor(model => model.Idworkstatus, Model.WorkStatusList, "", new { @class = "form-control" })
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    @Html.LabelFor(model => model.initialperiod, htmlAttributes: new { @class = "control-label" })
-                                    @Html.TextBoxFor(model => model.initialperiod, new { @class = "form-control", required = "required", @type = "Date" })
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6">
-                                    <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Endperiod, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Endperiod, new { @class = "form-control", required = "required", @type = "Date" })
+                                        @Html.LabelFor(model => model.Obtainedtitle, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Obtainedtitle, new { @class = "form-control" })
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Inmediateboss, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Inmediateboss, new { @class = "form-control" })
+                                        @Html.LabelFor(model => model.Idacademicstate, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Idacademicstate, Model.academicStateList, "", new { @class = "form-control" })
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Inmediatechiefnumbre, htmlAttributes: new { @class = "control-label" })
-                                        @Html.TextBoxFor(model => model.Inmediatechiefnumbre, new { @class = "form-control" })
+                                        @Html.LabelFor(model => model.Startdate, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Startdate, new { @class = "form-control", required = "required", @type = "Date" })
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Enddate, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Enddate, new { @class = "form-control", required = "required", @type = "Date" })
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Idperiodicity, htmlAttributes: new { @class = "control-label" })
+                                        @Html.DropDownListFor(model => model.Idperiodicity, Model.PeriodicityList, "", new { @class = "form-control" })
                                     </div>
                                 </div>
 
@@ -115,13 +116,12 @@
                         </div>
                     </div>
 
-                    <a href="@Url.Action("EmploymentListing", "List")" button type="button" class="btn btn-outline-primary btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff"><i class="fas fa-layer-group"></i>Lista</a>
+                    <a href="@Url.Action("Index", "StudyListing")" button type="button" class="btn btn-outline-success btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff"><i class="fas fa-layer-group"></i>Lista</a>
                 }
-
             </div>
         </div>
     </div>
 
 
-</section>
 
+</section>

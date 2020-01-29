@@ -29,8 +29,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Uploads\" />
-    <Folder Include="PdfConvocatoria\" />
+    <Folder Include="wwwroot\Uploads\" />
+    <Folder Include="wwwroot\PdfConvocatoria\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\PdfConvocatoria\Auxiliar.pdf" />
+    <None Include="wwwroot\PdfConvocatoria\Fisioterapeuta.pdf" />
+    <None Include="wwwroot\PdfConvocatoria\Ingeniero.pdf" />
+    <None Include="wwwroot\PdfConvocatoria\Tecnico Sistemas.pdf" />
+    <None Include="wwwroot\Uploads\Carta Laboral.txt" />
+    <None Include="wwwroot\Uploads\CC.txt" />
+    <None Include="wwwroot\Uploads\dato.txt" />
+    <None Include="wwwroot\Uploads\Diploma.txt" />
+    <None Include="wwwroot\Uploads\doc.txt" />
+    <None Include="wwwroot\Uploads\impo.txt" />
+    <None Include="wwwroot\Uploads\ojo.txt" />
+    <None Include="wwwroot\Uploads\Tarjeta Profesional.txt" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,9 @@
-﻿@{
+﻿@model IEnumerable<PastoralEmpleo.ViewModel.IndexConvocatoriaViewModel>
 
-ViewData["Title"] = "Index";
-Layout = null;
+@{
+
+    ViewData["Title"] = "Index";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ Layout = null;
                 <img src="~/images/unnamed.jpg" />
             </div>
 
-            <div class="logIn">                
+            <div class="logIn">
                 <a href="@Url.Action("Login", "Login")" button type="button" class="btn btn-light btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff">Ingresar</a>
                 <a href="@Url.Action("Register", "Login")" button type="button" class="btn btn-default btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ff0000">Registrate</a>
             </div>
@@ -31,6 +33,11 @@ Layout = null;
 
         <section class="content">
             <h3>CONVOCATORIAS</h3>
+
+            @foreach (var item in Model.ToList())
+            {
+                <a href="@Url.Content(item.Url)">@item.Position</a>
+            }
         </section>
 
         <aside>

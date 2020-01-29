@@ -16,12 +16,32 @@ namespace PastoralEmpleo.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            if (TempData["Error"] != null && !string.IsNullOrEmpty(TempData["Error"].ToString()))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
             return View();
+        }
+
+        public ActionResult Iniciar(string Mail, string Password)
+        {
+            User user= db.User.FirstOrDefault(e => e.Mail == Mail && e.Password == Password);
+
+            if (user == null)
+            {
+                TempData["Error"] = "Usuario no registrado";
+
+                return RedirectToAction("Login");
+            }
+
+            HttpContext.Session.SetInt32("IdUser", user.Iduser);
+
+            return RedirectToAction("Contact", "Home");
         }
 
         // GET: Login/Details/5
 
-       
+
         public ActionResult Register()
         {
             return View();

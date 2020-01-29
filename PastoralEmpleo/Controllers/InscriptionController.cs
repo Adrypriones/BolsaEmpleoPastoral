@@ -29,7 +29,7 @@ namespace PastoralEmpleo.Controllers
         {
             if (ModelState.IsValid)
             {
-                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(candidateViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
                 candidateViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));

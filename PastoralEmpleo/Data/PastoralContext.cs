@@ -216,10 +216,6 @@ namespace PastoralEmpleo.Data
 
                 entity.ToTable("document", "announcement");
 
-                entity.HasIndex(e => e.Idcandidate)
-                    .HasName("idcandidate_UNIQUE")
-                    .IsUnique();
-
                 entity.HasIndex(e => e.Iddocumenttype)
                     .HasName("iddocument_documenttype_id_idx");
 

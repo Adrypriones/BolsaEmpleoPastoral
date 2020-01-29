@@ -33,5 +33,7 @@ namespace PastoralEmpleo.ViewModel
         public string FilePath { get; set; }
 
         public IFormFile File { get; set; }
+
+        public int Iddocumenttype { get; set; }
     }
 }

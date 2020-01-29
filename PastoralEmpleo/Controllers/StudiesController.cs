@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
 using System.IO;
-
+using System.Linq;
+using Microsoft.AspNetCore.Http;
+using PastoralEmpleo.Shared.Enum;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -15,7 +14,7 @@ namespace PastoralEmpleo.Controllers
     {
 
         private PastoralContext db = new PastoralContext();
-        
+
         public ActionResult IndexStudies()
         {
             StudiesInformationViewModel studies = new StudiesInformationViewModel();
@@ -31,7 +30,7 @@ namespace PastoralEmpleo.Controllers
             if (ModelState.IsValid)
             {
 
-                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(studiesViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
                 studiesViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
@@ -46,19 +45,20 @@ namespace PastoralEmpleo.Controllers
                 studie.Startdate = studiesViewModel.Startdate;
                 studie.Enddate = studiesViewModel.Enddate;
                 studie.Idperiodicity = studiesViewModel.Idperiodicity;
+                studie.Idcandidate = HttpContext.Session.GetInt32("IdUser");
 
                 db.Studies.Add(studie);
                 db.SaveChanges();
 
 
-                 Document document = new Document
+                Document document = new Document
                 {
-                Idcandidate = studie.Idcandidate,
-                Url = filePath,
-                Iddocumenttype = studie.Iddocumenttype,
+                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
+                    Url = filePath,
+                    Iddocumenttype = (int)DocumentTypeEnum.CertificadoEstudio,
                 };
 
-                 db.Document.Add(document);
+                db.Document.Add(document);
                 db.SaveChanges();
 
                 return RedirectToAction("IndexExperience", "Experience");

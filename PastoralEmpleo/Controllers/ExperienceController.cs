@@ -54,7 +54,7 @@ namespace PastoralEmpleo.Controllers
 
                 Document document = new Document
                 {
-                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
+                    Idcandidate = HttpContext.Session.GetInt32("IdCandidate"),
                     Url = filePath,
                     Iddocumenttype = (int)DocumentTypeEnum.CartaLaboral,
                 };

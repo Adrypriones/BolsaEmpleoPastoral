@@ -7,6 +7,8 @@ using PastoralEmpleo.ViewModel;
 using System.IO;
 using System.Linq;
 
+
+
 namespace PastoralEmpleo.Controllers
 {
     public class DocumentController : Controller
@@ -30,23 +32,26 @@ namespace PastoralEmpleo.Controllers
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(documentViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
-                documentViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));                
+                documentViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));              
+
+                
 
                 Document document = new Document
                 {
-                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
+                    Idcandidate = HttpContext.Session.GetInt32("IdCandidate"),
                     Url = filePath,
-                    Iddocumenttype = documentViewModel.Iddocumenttype
+                    Iddocumenttype = documentViewModel.Iddocumenttype,               
                 };
 
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction();
+                return RedirectToAction("IndexDocument", "Document");
             }
 
             return View(documentViewModel);
         }
+
 
 
     }

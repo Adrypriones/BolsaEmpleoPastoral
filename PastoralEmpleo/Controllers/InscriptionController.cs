@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
@@ -17,12 +18,30 @@ namespace PastoralEmpleo.Controllers
         // GET: Inscription
         public ActionResult Candidate()
         {
-            CandidateInformationViewModel candidate = new CandidateInformationViewModel();
-            candidate.CivilStatusList = new SelectList(db.Civilstatus.ToList(), "Idcivilstatus", "Name", 1);
-            candidate.GenderList = new SelectList(db.Gender.ToList(), "Idgender", "Name", 1);
-            candidate.DocumenttypeList = new SelectList(db.Documenttype.Where(d => d.SubType == 1).ToList(), "Iddocumenttype", "Name", 1);
+            CandidateInformationViewModel candidateViewModel = new CandidateInformationViewModel();
+            candidateViewModel.CivilStatusList = new SelectList(db.Civilstatus.ToList(), "Idcivilstatus", "Name", 1);
+            candidateViewModel.GenderList = new SelectList(db.Gender.ToList(), "Idgender", "Name", 1);
+            candidateViewModel.DocumenttypeList = new SelectList(db.Documenttype.Where(d => d.SubType == 1).ToList(), "Iddocumenttype", "Name", 1);
 
-            return View(candidate);
+            var candidate = db.Candidate.FirstOrDefault(c => c.Iduser == (int)HttpContext.Session.GetInt32("IdUser"));
+
+            if (candidate != null)
+            {
+                candidate.Idcivilstatus = candidateViewModel.Idcivilstatus;
+                candidate.Iddocumenttype = candidateViewModel.Iddocumenttype;
+                candidate.Idgender = candidateViewModel.Idgender;
+                candidate.Name = candidateViewModel.Name;
+                candidate.Surname = candidateViewModel.Surname;
+                candidate.Mail = candidateViewModel.Mail;
+                candidate.Identitydocumento = candidateViewModel.Identitydocumento;
+                candidate.Telephone = candidateViewModel.Telephone;
+                candidate.Address = candidateViewModel.Address;
+                candidate.Brithdate = candidateViewModel.Brithdate;
+                candidate.Municipality = candidateViewModel.Municipality;
+                candidate.District = candidateViewModel.District;              
+
+            }
+            return View(candidateViewModel);
         }
 
         public ActionResult Guardar(CandidateInformationViewModel candidateViewModel)
@@ -48,9 +67,12 @@ namespace PastoralEmpleo.Controllers
                 candidate.Brithdate = candidateViewModel.Brithdate;
                 candidate.Municipality = candidateViewModel.Municipality;
                 candidate.District = candidateViewModel.District;
+                candidate.Iduser = HttpContext.Session.GetInt32("IdUser");
 
                 db.Candidate.Add(candidate);
                 db.SaveChanges();
+
+                HttpContext.Session.SetInt32("IdCandidate", candidate.Idcandidate);
 
                 Document document = new Document
                 {  

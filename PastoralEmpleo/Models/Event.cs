@@ -16,8 +16,7 @@ namespace PastoralEmpleo.Models
         public decimal Salary { get; set; }
         public string Observations { get; set; }
         public DateTime Initialeventdate { get; set; }
-        public DateTime Endeventdate { get; set; }
-        public int? Idstatus { get; set; }
+        public DateTime Endeventdate { get; set; }       
         public string Description { get; set; }
         public string Product { get; set; }
         public int Vacant { get; set; }
@@ -26,9 +25,10 @@ namespace PastoralEmpleo.Models
         public int? Idcontracttype { get; set; }
         public int? Idwaytopay { get; set; }
         public string Url { get; set; }
+        public int? Idstatus { get; set; }
 
-        public Contracttype IdcontracttypeNavigation { get; set; }
-        public Status IdstatusNavigation { get; set; }
+        public Contracttype IdcontracttypeNavigation { get; set; }        
         public Waytopay IdwaytopayNavigation { get; set; }
+        public Status IdstatusNavigation { get; set; }
     }
 }

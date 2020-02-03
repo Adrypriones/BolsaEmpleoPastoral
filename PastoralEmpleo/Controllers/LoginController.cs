@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
+using System.Linq;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -25,7 +22,7 @@ namespace PastoralEmpleo.Controllers
 
         public ActionResult Iniciar(string Mail, string Password)
         {
-            User user= db.User.FirstOrDefault(e => e.Mail == Mail && e.Password == Password);
+            User user = db.User.FirstOrDefault(e => e.Mail == Mail && e.Password == Password);
 
             if (user == null)
             {
@@ -35,6 +32,13 @@ namespace PastoralEmpleo.Controllers
             }
 
             HttpContext.Session.SetInt32("IdUser", user.Iduser);
+
+            var candidate = db.Candidate.FirstOrDefault(c => c.Iduser == user.Iduser);
+
+            if (candidate != null)
+            {
+                HttpContext.Session.SetInt32("IdCandidate", candidate.Idcandidate);
+            }
 
             return RedirectToAction("Contact", "Home");
         }
@@ -63,7 +67,7 @@ namespace PastoralEmpleo.Controllers
             }
 
             return View();
-        }        
+        }
 
         [HttpPost]
         public ActionResult Authenticate([Bind("Name, Surname,Mail, Password")] User usuario)

@@ -276,13 +276,13 @@ namespace PastoralEmpleo.Data
                 entity.ToTable("event", "announcement");
 
                 entity.HasIndex(e => e.Idcontracttype)
-                    .HasName("fk_event_contracttype_id");
-
-                entity.HasIndex(e => e.Idstatus)
-                    .HasName("fk_event_status_id_idx");
+                    .HasName("fk_event_contracttype_id");              
 
                 entity.HasIndex(e => e.Idwaytopay)
                     .HasName("fk_event_waytopay_id_idx");
+
+                entity.HasIndex(e => e.Idstatus)
+                   .HasName("fk_event_status_id_idx");
 
                 entity.Property(e => e.Idevent)
                     .HasColumnName("idevent")
@@ -326,6 +326,7 @@ namespace PastoralEmpleo.Data
                 entity.Property(e => e.Idstatus)
                     .HasColumnName("idstatus")
                     .HasColumnType("int(11)");
+
 
                 entity.Property(e => e.Idwaytopay)
                     .HasColumnName("idwaytopay")
@@ -393,9 +394,9 @@ namespace PastoralEmpleo.Data
                     .HasConstraintName("fk_event_contracttype_id");
 
                 entity.HasOne(d => d.IdstatusNavigation)
-                    .WithMany(p => p.Event)
-                    .HasForeignKey(d => d.Idstatus)
-                    .HasConstraintName("fk_event_status_id");
+                   .WithMany(p => p.Event)
+                   .HasForeignKey(d => d.Idstatus)
+                   .HasConstraintName("fk_event_status_id");
 
                 entity.HasOne(d => d.IdwaytopayNavigation)
                     .WithMany(p => p.Event)
@@ -409,12 +410,11 @@ namespace PastoralEmpleo.Data
 
                 entity.ToTable("experience", "announcement");
 
-                entity.HasIndex(e => e.Idcandidate)
-                    .HasName("idcandidate_UNIQUE")
-                    .IsUnique();
-
                 entity.HasIndex(e => e.Idworkstatus)
                     .HasName("fk_experience_workstatus_id_idx");
+
+                entity.HasIndex(e => e.Idcandidate)
+                    .HasName("fk_experience_candidate_id_idx");
 
                 entity.Property(e => e.Idexperience)
                     .HasColumnName("idexperience")
@@ -432,11 +432,7 @@ namespace PastoralEmpleo.Data
 
                 entity.Property(e => e.Idcandidate)
                     .HasColumnName("idcandidate")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.Iddocumenttype)
-                    .HasColumnName("iddocumenttype")
-                    .HasColumnType("int(11)");
+                    .HasColumnType("int(11)");                
 
                 entity.Property(e => e.Idworkstatus)
                     .HasColumnName("idworkstatus")
@@ -543,10 +539,7 @@ namespace PastoralEmpleo.Data
                     .HasName("fk_studies_periodicity_id_idx");
 
                 entity.HasIndex(e => e.Idstudylevel)
-                    .HasName("fk_studies_studylevel_id_idx");
-
-                entity.HasIndex(e => e.Iddocumenttype)
-                    .HasName("fk_studies_documenttype_idx");
+                    .HasName("fk_studies_studylevel_id_idx");               
 
                 entity.Property(e => e.Idstudies)
                     .HasColumnName("idstudies")

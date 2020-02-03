@@ -45,7 +45,7 @@ namespace PastoralEmpleo.Controllers
                 studie.Startdate = studiesViewModel.Startdate;
                 studie.Enddate = studiesViewModel.Enddate;
                 studie.Idperiodicity = studiesViewModel.Idperiodicity;
-                studie.Idcandidate = HttpContext.Session.GetInt32("IdUser");
+                studie.Idcandidate = HttpContext.Session.GetInt32("IdCandidate");
 
                 db.Studies.Add(studie);
                 db.SaveChanges();
@@ -53,7 +53,7 @@ namespace PastoralEmpleo.Controllers
 
                 Document document = new Document
                 {
-                    Idcandidate = HttpContext.Session.GetInt32("IdUser"),
+                    Idcandidate = HttpContext.Session.GetInt32("IdCandidate"),
                     Url = filePath,
                     Iddocumenttype = (int)DocumentTypeEnum.CertificadoEstudio,
                 };

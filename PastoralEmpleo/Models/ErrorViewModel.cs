@@ -1,5 +1,3 @@
-using System;
-
 namespace PastoralEmpleo.Models
 {
     public class ErrorViewModel

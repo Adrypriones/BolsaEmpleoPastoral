@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PastoralEmpleo.Models.Experience>
 @{
-    ViewData["Title"] = "EmploymentListing";
+    ViewData["Title"] = "ExperienceList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -58,19 +58,16 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Inmediatechiefnumbre)
                                         </td>
+
                                         <td>
                                             <ul class="breadcrumb breadcrumb-tabs">
                                                 <li>
-                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                    <a href="@Url.Action("Experience", "Experience", new { id=item.Idexperience })" class="btn btn-success btn-rounded small" style="color:#000000">
                                                         Editar
                                                     </a>
 
-                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-custom btn-rounded small" style="color:#000000">
-                                                        Agregar
-                                                    </a>
-
-                                                    <a href="@Url.Action("Experience", "Inscription", new { id=item.Idexperience })" class="btn btn-danger btn-rounded small" style="color:#000000">
-                                                        Eliminar
+                                                    <a href="@Url.Action("Experience", "Experience")" class="btn btn-dribbble btn-rounded small " style="color:#000000">
+                                                        Nuevo
                                                     </a>
 
                                                 </li>                                             
@@ -84,7 +81,7 @@
                             </table>
                             
                                 <div class="col-sm-12 text-right">
-                                     <a href="@Url.Action("Document", "Inscription")" class="text-primary m-l-5"><b>Siguiente</b></a></p>
+                                     <a href="@Url.Action("Document", "Document")" class="text-primary m-l-5"><b>Siguiente</b></a></p>
                                 </div>
                             
                         </div>

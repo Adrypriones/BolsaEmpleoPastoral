@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
+using PastoralEmpleo.Shared.Enum;
 using PastoralEmpleo.ViewModel;
+using System;
 using System.IO;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using PastoralEmpleo.Shared.Enum;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -15,7 +16,7 @@ namespace PastoralEmpleo.Controllers
 
         private PastoralContext db = new PastoralContext();
 
-        public ActionResult IndexStudies()
+        public ActionResult Studies()
         {
             StudiesInformationViewModel studies = new StudiesInformationViewModel();
             studies.academicStateList = new SelectList(db.Academicstate.ToList(), "Idacademicstate", "Name", 1);
@@ -25,10 +26,15 @@ namespace PastoralEmpleo.Controllers
             return View(studies);
         }
 
-        public ActionResult Guardar(StudiesInformationViewModel studiesViewModel)
+        [HttpPost]
+        public ActionResult Studies(StudiesInformationViewModel studiesViewModel)
         {
             if (ModelState.IsValid)
             {
+                if (studiesViewModel.Startdate > DateTime.Now)
+                {
+
+                }
 
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(studiesViewModel.File.FileName);
@@ -50,7 +56,6 @@ namespace PastoralEmpleo.Controllers
                 db.Studies.Add(studie);
                 db.SaveChanges();
 
-
                 Document document = new Document
                 {
                     Idcandidate = HttpContext.Session.GetInt32("IdCandidate"),
@@ -61,13 +66,16 @@ namespace PastoralEmpleo.Controllers
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction("IndexExperience", "Experience");
+                return RedirectToAction("Experience", "Experience");
             }
 
             return View(studiesViewModel);
         }
-
-
-
+        
+        public ActionResult StudyList()
+        {
+            var a = db.Studies.Where(s => s.Idcandidate == HttpContext.Session.GetInt32("IdCandidate")).ToList();
+            return View(a);
+        }
     }
 }

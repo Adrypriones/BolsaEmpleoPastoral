@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PastoralEmpleo.Shared.Validations;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,14 +15,18 @@ namespace PastoralEmpleo.ViewModel
         public string Position { get; set; }
 
         [Display(Name = "Estado Laboral")]
-        public int Idworkstatus { get; set; }
+        public int? Idworkstatus { get; set; }
         public SelectList WorkStatusList { get; set; }
-        
-        [Display(Name = "Fecha Ingreso")]
-        public DateTime initialperiod { get; set; }
 
+        [DateValidation]
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha Ingreso")]
+        public DateTime? Initialperiod { get; set; }
+
+        [DateValidation]
+        [DataType(DataType.Date)]
         [Display(Name = "Fecha Salida")]
-        public DateTime Endperiod { get; set; }
+        public DateTime? Endperiod { get; set; }
 
         [Display(Name = "Jefe Inmediato")]
         public string Inmediateboss { get; set; }
@@ -35,5 +40,7 @@ namespace PastoralEmpleo.ViewModel
         public IFormFile File { get; set; }
 
         public int Iddocumenttype { get; set; }
+
+        public int Idexperience { get; set; }
     }
 }

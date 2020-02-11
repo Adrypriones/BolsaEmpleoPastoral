@@ -1,31 +1,31 @@
 ﻿
 
 <!DOCTYPE html>
- <html>
- <head>
-     <script src="https://kit.fontawesome.com/4f0148de5d.js" crossorigin="anonymous"></script>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-     <meta name="author" content="Coderthemes">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+    <meta name="author" content="Coderthemes">
 
-     <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-     <title>@ViewData["Title"] - PastoralEmpleo</title>
+    <title>@ViewData["Title"] - PastoralEmpleo</title>
 
-     <!--Morris Chart CSS -->
-     <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
 
-     <!-- App css -->
-     <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-     <link href="~/css/icons.css" rel="stylesheet" type="text/css" />
-     <link href="~/css/style.css" rel="stylesheet" type="text/css" />
-     <script src="~/lib/modernizr/modernizr.min.js"></script>
+    <!-- App css -->
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" />
+    <script src="~/lib/modernizr/modernizr.min.js"></script>
 
- </head>
+</head>
 
-  <body class="fixed-left">
+<body class="fixed-left">
 
     <!-- Begin page -->
     <div id="wrapper">
@@ -43,7 +43,7 @@
                 <div class="container-fluid">
 
                     <!-- Page title -->
-                    
+
 
                     <nav class="navbar-custom">
 
@@ -54,7 +54,7 @@
                                 <div class="notification-box">
                                     <ul class="list-inline mb-0">
                                         <li>
-                                            <a href="javascript:void(0);" class="right-bar-toggle">                                                
+                                            <a href="javascript:void(0);" class="right-bar-toggle">
                                             </a>
                                             <div class="noti-dot">
                                                 <span class="dot"></span>
@@ -64,7 +64,7 @@
                                     </ul>
                                 </div>
                                 <!-- End Notification bar -->
-                            </li>                          
+                            </li>
 
                         </ul>
                     </nav>
@@ -78,63 +78,46 @@
 
                 <!-- User -->
                 <div class="user-box">
-                    
+
                     <figure class="full-box">
-                        <img src="~/images/TeacherMaleAvatar2.png"/>
+                        <img src="~/images/TeacherMaleAvatar2.png" />
                         <figcaption class="text-center text-titles">Mis datos</figcaption>
                     </figure>
 
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="mdi mdi-settings"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="mdi mdi-settings"></i>
-                            </a>
-                        </li>
-
-                        <li class="list-inline-item">
-                            <a href="#" class="text-custom">
-                                <i class="mdi mdi-power"></i>
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </div>
                 <!-- End User -->
                 <!--- Sidemenu -->
                 <div id="sidebar-menu">
                     <ul>
-                        <li class="text-muted menu-title" style="color:#000000"><i class="fas fa-cloud-sun"></i>BIENVENIDO</li>
+                        <li class="text-muted menu-title" style="color:#000000"><i class="fa fa-handshake-o"></i> BIENVENIDO</li>
 
                         <li>
-                            <a href="@Url.Action("Contact", "Home")" style="color:#004D97" ><i class="fas fa-chalkboard"></i><span> Panel de Control</span> </a>
+                            <a asp-controller="Home" asp-action="Contact" style="color:#004D97"><i class="fa fa-spinner"></i><span> Panel de Control</span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("Candidate", "Inscription")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-edit"></i><span> Datos Personales</span></a>
+                            <a asp-controller="Inscription" asp-action="Candidate" class="waves-effect" style="color:#004D97"><i class="fa fa-address-book"></i><span> Datos Personales</span></a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexStudies", "Studies")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-graduate"></i><span> Académicos </span> </a>
+                            <a asp-controller="Studies" asp-action="Studies" class="waves-effect" style="color:#004D97"><i class="fa fa-graduation-cap"></i><span> Formación </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexExperience", "Experience")" class="waves-effect" style="color:#004D97"><i class="fas fa-user-tie"></i><span> Experiencia Laboral </span> </a>
+                            <a asp-controller="Experience" asp-action="Experience" class="waves-effect" style="color:#004D97"><i class="fa fa-black-tie"></i><span> Experiencia Laboral </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("IndexDocument", "Document")" class="waves-effect" style="color:#004D97"><i class="fas fa-file"></i><span> Otros Documentos </span> </a>
+                            <a asp-controller="Document" asp-action="Document" class="waves-effect" style="color:#004D97"><i class="fa fa-file-text"></i><span> Otros Documentos </span> </a>
                         </li>
 
                         <li>
-                            <a href="@Url.Action("Event", "Event")" style="color:#004D97"><i class="fas fa-user-friends"></i><span> Convocatoria </span> </a>
+                            <a asp-controller="Event" asp-action="Event" style="color:#004D97"><i class="fa fa-users"></i><span> Convocatoria </span> </a>
                         </li>
-                        
-                              
-                             
+
+
+
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -154,6 +137,33 @@
                 <div class="container-fluid">
                     <div class="row">
 
+                        <div class="col-xs-12 col-sm-3">
+                            <a asp-controller="Inscription" asp-action="Candidate" class="btn btn-info" style="color:#004D97"><i class="fa fa-address-book"></i> DATOS PERSONALES</a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3">
+                            <a asp-controller="Studies" asp-action="Studies" class="btn btn-success" style="color:#004D97"><i class="fa fa-graduation-cap"></i> FORMACIÓN</a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3">
+                            <a asp-controller="Experience" asp-action="Experience" class="btn btn-primary" style="color:#004D97"><i class="fa fa-black-tie"></i> EXPERIENCIA</a>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3">
+                            <a asp-controller="Document" asp-action="Document" class="btn btn-danger" style="color:#004D97"><i class="fa fa-file-text"></i> OTROS DOCUMENTOS</a>
+                        </div>
+
+                        <div class="container-fluid">
+                            <div class="page-header">
+                                <h1 class="text-center"><small style="color:seagreen">@ViewData["Description"]</small></h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+
+
                         @RenderBody()
 
                     </div>
@@ -164,7 +174,7 @@
             </div> <!-- content -->
 
             <footer class="footer text-right">
-               2019 © Pastoral Social Derechos Reservados
+                2019 © Pastoral Social Derechos Reservados
             </footer>
 
         </div>
@@ -173,16 +183,16 @@
     <!-- END wrapper -->
     <!-- jQuery  -->
     <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/popper.js/umd/popper.js"></script>   
+    <script src="~/lib/popper.js/umd/popper.js"></script>
     <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
     <script src="~/lib/Detect.js/detect.js"></script>
-    <script src="~/lib/fastclick/fastclick.js"></script>      
+    <script src="~/lib/fastclick/fastclick.js"></script>
     <script src="~/lib/jquery.blockUI/jquery.blockUI.js"></script>
-    <script src="~/lib/assets/waves.js"></script>    
+    <script src="~/lib/assets/waves.js"></script>
     <script src="~/lib/jquery.nicescroll/jquery.nicescroll.js"></script>
     <script src="~/lib/jQuery-slimScroll/jquery.slimscroll.js"></script>
     <script src="~/lib/jquery-scrollTo/jquery.scrollTo.min.js"></script>
-    
+
     <!-- KNOB JS -->
     <!--[if IE]>
     <script type="text/javascript" src="assets/plugins/jquery-knob/excanvas.js"></script>
@@ -191,17 +201,17 @@
 
     <!--Morris Chart-->
     <script src="~/lib/morris.js/morris.min.js"></script>
-    
+
     <script src="~/lib/raphael/raphael.min.js"></script>
 
     <!-- Dashboard init -->
     <script src="~/lib/assets/jquery.dashboard.js"></script>
-   
+
 
     <!-- App js -->
-    <script src="~/lib/assets/jquery.core.js"></script>    
+    <script src="~/lib/assets/jquery.core.js"></script>
     <script src="~/lib/assets/jquery.app.js"></script>
 
     @RenderSection("Scripts", required: false)
-  </body>
+</body>
 </html>

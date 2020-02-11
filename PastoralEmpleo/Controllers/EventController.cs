@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ItextSharpText = iTextSharp.text;
@@ -16,9 +18,34 @@ namespace PastoralEmpleo.Controllers
         private PastoralContext db = new PastoralContext();
 
         // GET: Login
-        public ActionResult Event()
+        public ActionResult Event(int id)
         {
             EventInformationViewModel candidate = new EventInformationViewModel();
+
+            if (id > 0)
+            {
+                Event eventObject = db.Event.FirstOrDefault(e => e.Idevent == id);
+
+                candidate.Idevent = id;
+                candidate.Callnumber = eventObject.Callnumber;
+                candidate.Initialeventdate = eventObject.Initialeventdate;
+                candidate.Endeventdate = eventObject.Endeventdate;
+                candidate.Position = eventObject.Position;
+                candidate.Description = eventObject.Description;
+                candidate.Product = eventObject.Product;
+                candidate.Study = eventObject.Study;
+                candidate.Experience = eventObject.Experience;
+                candidate.Vacant = eventObject.Vacant;
+                candidate.Idcontracttype = eventObject.Idcontracttype;
+                candidate.Laboraltime = eventObject.Laboraltime;
+                candidate.Place = eventObject.Place;
+                candidate.Salary = eventObject.Salary;
+                candidate.Idwaytopay = eventObject.Idwaytopay;
+                candidate.Initialjobetime = eventObject.Initialjobetime;
+                candidate.Endjobtime = eventObject.Endjobtime;
+                candidate.Functions = eventObject.Functions;
+                candidate.Observations = eventObject.Observations;
+            }
 
             candidate.ContractTypeList = new SelectList(db.Contracttype.ToList(), "Idcontracttype", "Name", 1);
             candidate.WayTopayList = new SelectList(db.Waytopay.ToList(), "Idwaytopay", "Name", 1);
@@ -27,32 +54,43 @@ namespace PastoralEmpleo.Controllers
             return View(candidate);
         }
 
-        public ActionResult Guardar([Bind("Callnumber,Initialeventdate,Endeventdate,Position,Description,Product,Study,Experience,Vacant,Idcontracttype,Laboraltime,Place,Salary,Idwaytopay,Initialjobetime,Endjobtime,Functions,Observations")] EventInformationViewModel eventViewModel)
+        [HttpPost]
+        public ActionResult Event(int id, EventInformationViewModel eventViewModel)
         {
             if (ModelState.IsValid)
             {
-                Event eventObject = new Event();
+                Event eventObject = new Event
+                {
+                    Callnumber = eventViewModel.Callnumber,
+                    Initialeventdate = (DateTime)eventViewModel.Initialeventdate,
+                    Endeventdate = (DateTime)eventViewModel.Endeventdate,
+                    Position = eventViewModel.Position,
+                    Description = eventViewModel.Description,
+                    Product = eventViewModel.Product,
+                    Study = eventViewModel.Study,
+                    Experience = eventViewModel.Experience,
+                    Vacant = eventViewModel.Vacant,
+                    Idcontracttype = eventViewModel.Idcontracttype,
+                    Laboraltime = eventViewModel.Laboraltime,
+                    Place = eventViewModel.Place,
+                    Salary = eventViewModel.Salary,
+                    Idwaytopay = eventViewModel.Idwaytopay,
+                    Initialjobetime = eventViewModel.Initialjobetime,
+                    Endjobtime = eventViewModel.Endjobtime,
+                    Functions = eventViewModel.Functions,
+                    Observations = eventViewModel.Observations
+                };
 
-                eventObject.Callnumber = eventViewModel.Callnumber;
-                eventObject.Initialeventdate = eventViewModel.Initialeventdate;
-                eventObject.Endeventdate = eventViewModel.Endeventdate;
-                eventObject.Position = eventViewModel.Position;
-                eventObject.Description = eventViewModel.Description;
-                eventObject.Product = eventViewModel.Product;
-                eventObject.Study = eventViewModel.Study;
-                eventObject.Experience = eventViewModel.Experience;
-                eventObject.Vacant = eventViewModel.Vacant;
-                eventObject.Idcontracttype = eventViewModel.Idcontracttype;
-                eventObject.Laboraltime = eventViewModel.Laboraltime;
-                eventObject.Place = eventViewModel.Place;
-                eventObject.Salary = eventViewModel.Salary;
-                eventObject.Idwaytopay = eventViewModel.Idwaytopay;
-                eventObject.Initialjobetime = eventViewModel.Initialjobetime;
-                eventObject.Endjobtime = eventViewModel.Endjobtime;
-                eventObject.Functions = eventViewModel.Functions;
-                eventObject.Observations = eventViewModel.Observations;
+                if (id > 0)
+                {
+                    eventObject.Idevent = id;
+                    db.Event.Update(eventObject);
+                }
+                else
+                {
+                    db.Event.Add(eventObject);
+                } 
 
-                db.Event.Add(eventObject);
                 db.SaveChanges();
 
                 GeneratePDF(eventObject.Idevent);
@@ -63,6 +101,53 @@ namespace PastoralEmpleo.Controllers
             return View(eventViewModel);
         }
 
+        public ActionResult EventList(List<Event> events)
+        {
+            if (!events.Any())
+            {
+                events = db.Event.ToList();
+            }
+
+            return View(events);
+        }
+
+        public ActionResult Imprimir(int id)
+        {
+            var evento = db.Event.FirstOrDefault(e => e.Idevent == id);
+
+            string path = evento.Url;
+            var fileName = Path.GetFileNameWithoutExtension(path);
+
+            var stream = new FileStream($".\\wwwroot\\{path}", FileMode.Open);
+            return File(stream, "application/pdf", fileName);
+        }
+
+        public ActionResult Buscar([Bind("Position")] SearchCallViewModel searchCallViewModel)
+        {
+            var restult = db.Event.Where(e => e.Position.Contains(searchCallViewModel.Position)).ToList();
+
+            if (restult == null)
+            {
+                TempData["Error"] = "CARGO NO ENCONTRADO";
+
+                return RedirectToAction("EventSearch");
+            }
+
+            return RedirectToAction("EventList", restult);
+        }
+
+        public ActionResult EventSearch()
+        {
+            if (TempData["Error"] != null && !string.IsNullOrEmpty(TempData["Error"].ToString()))
+            {
+                ViewBag.Error = TempData["Error"].ToString();
+            }
+
+            return View();
+        }
+
+
+        #region private methods
 
         private void GeneratePDF(int id)
         {
@@ -79,8 +164,11 @@ namespace PastoralEmpleo.Controllers
                 PdfWriter.GetInstance(doc, fileStream);
                 doc.Open();
 
-                Paragraph title = new Paragraph();
-                title.Font = FontFactory.GetFont(FontFactory.TIMES, 18f, BaseColor.Blue);
+                Paragraph title = new Paragraph
+                {
+                    Font = FontFactory.GetFont(FontFactory.TIMES, 18f, BaseColor.Blue)
+                };
+
                 doc.Add(title); doc.Add(new Paragraph("PASTORAL SOCIAL"));
                 doc.Add(title); doc.Add(new Paragraph("ARQUIDIÓCESIS DE MEDELLÍN"));
                 doc.Add(title); doc.Add(new Paragraph("CONVOCATORIA"));
@@ -133,5 +221,7 @@ namespace PastoralEmpleo.Controllers
                 db.SaveChanges();
             }
         }
+
+        #endregion
     }
 }

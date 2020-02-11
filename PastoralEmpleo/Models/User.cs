@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using PastoralEmpleo.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 

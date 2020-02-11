@@ -27,24 +27,25 @@ namespace PastoralEmpleo.Controllers
 
             if (candidate != null)
             {
-                candidate.Idcivilstatus = candidateViewModel.Idcivilstatus;
-                candidate.Iddocumenttype = candidateViewModel.Iddocumenttype;
-                candidate.Idgender = candidateViewModel.Idgender;
-                candidate.Name = candidateViewModel.Name;
-                candidate.Surname = candidateViewModel.Surname;
-                candidate.Mail = candidateViewModel.Mail;
-                candidate.Identitydocumento = candidateViewModel.Identitydocumento;
-                candidate.Telephone = candidateViewModel.Telephone;
-                candidate.Address = candidateViewModel.Address;
-                candidate.Brithdate = candidateViewModel.Brithdate;
-                candidate.Municipality = candidateViewModel.Municipality;
-                candidate.District = candidateViewModel.District;              
+                candidateViewModel.Idcivilstatus = candidate.Idcivilstatus;
+                candidateViewModel.Iddocumenttype = candidate.Iddocumenttype;
+                candidateViewModel.Idgender = candidate.Idgender;
+                candidateViewModel.Name = candidate.Name;
+                candidateViewModel.Surname = candidate.Surname;
+                candidateViewModel.Mail = candidate.Mail;
+                candidateViewModel.Identitydocumento = candidate.Identitydocumento;
+                candidateViewModel.Telephone = candidate.Telephone;
+                candidateViewModel.Address = candidate.Address;
+                candidateViewModel.Brithdate = candidate.Brithdate;
+                candidateViewModel.Municipality = candidate.Municipality;
+                candidateViewModel.District = candidate.District;              
 
             }
             return View(candidateViewModel);
         }
 
-        public ActionResult Guardar(CandidateInformationViewModel candidateViewModel)
+        [HttpPost]
+        public ActionResult Candidate(CandidateInformationViewModel candidateViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +86,13 @@ namespace PastoralEmpleo.Controllers
                 db.SaveChanges();
 
 
-                return RedirectToAction("IndexStudies", "Studies");
+                return RedirectToAction("Studies", "Studies");
             }
 
+            candidateViewModel.CivilStatusList = new SelectList(db.Civilstatus.ToList(), "Idcivilstatus", "Name", 1);
+            candidateViewModel.GenderList = new SelectList(db.Gender.ToList(), "Idgender", "Name", 1);
+            candidateViewModel.DocumenttypeList = new SelectList(db.Documenttype.Where(d => d.SubType == 1).ToList(), "Iddocumenttype", "Name", 1);
+                       
             return View(candidateViewModel);
 
         }

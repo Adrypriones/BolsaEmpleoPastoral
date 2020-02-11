@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using PastoralEmpleo.Shared.Validations;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -8,7 +9,7 @@ namespace PastoralEmpleo.ViewModel
     public class CandidateInformationViewModel
     {
         [Display(Name = "Tipo Documento")]
-        public int Iddocumenttype { get; set; }
+        public int? Iddocumenttype { get; set; }
         public SelectList DocumenttypeList { get; set; }
 
         [Display(Name = "Documento Identidad")]
@@ -29,15 +30,17 @@ namespace PastoralEmpleo.ViewModel
         public string Mail { get; set; }
 
         [Display(Name = "Sexo")]
-        public int Idgender { get; set; }
+        public int? Idgender { get; set; }
         public SelectList GenderList { get; set; }
 
         [Display(Name = "Estado Civil")]
-        public int Idcivilstatus { get; set; }
+        public int? Idcivilstatus { get; set; }
         public SelectList CivilStatusList { get; set; }
 
+        [DateValidation]
+        [DataType(DataType.Date)]
         [Display(Name = "Fecha Nacimento")]
-        public DateTime Brithdate  { get; set; }
+        public DateTime? Brithdate  { get; set; }
 
         [Display(Name = "Teléfono")]
         public string Telephone { get; set; }

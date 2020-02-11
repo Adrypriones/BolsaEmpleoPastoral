@@ -7,9 +7,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using PastoralEmpleo.Shared.Enum;
-
-
-
+using System;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -17,39 +15,62 @@ namespace PastoralEmpleo.Controllers
     {
         private PastoralContext db = new PastoralContext();
 
-        public ActionResult IndexExperience()
+
+        public ActionResult Experience(int id)
         {
-
-
             ExperienceInformationViewModel experience = new ExperienceInformationViewModel();
+
+            if (id > 0)
+            {
+                Experience experienceObject = db.Experience.FirstOrDefault(e => e.Idexperience == id);
+
+                experience.Idexperience = id;
+                experience.Companyname = experienceObject.Companyname;
+                experience.Endperiod = experienceObject.Endperiod;
+                experience.Position = experienceObject.Position;
+                experience.Idworkstatus = experienceObject.Idworkstatus;
+                experience.Initialperiod = experienceObject.Initialperiod;
+                experience.Inmediateboss = experienceObject.Inmediateboss;
+                experience.Inmediatechiefnumbre = experienceObject.Inmediatechiefnumbre;                
+            }
 
             experience.WorkStatusList = new SelectList(db.Workstatus.ToList(), "Idworkstatus", "Name", 1);
 
             return View(experience);
         }
 
-        public ActionResult Guardar(ExperienceInformationViewModel experienceViewModel)
+        [HttpPost]
+        public ActionResult Experience(int id, ExperienceInformationViewModel experienceViewModel)
         {
             if (ModelState.IsValid)
             {
-
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(experienceViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
                 experienceViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
 
-                Experience experience = new Experience();
+                Experience experience = new Experience
+                {
+                    Companyname = experienceViewModel.Companyname,
+                    Endperiod = experienceViewModel.Endperiod,
+                    Position = experienceViewModel.Position,
+                    Idworkstatus = experienceViewModel.Idworkstatus,
+                    Initialperiod = (DateTime)experienceViewModel.Initialperiod,
+                    Inmediateboss = experienceViewModel.Inmediateboss,
+                    Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre,
+                    Idcandidate = HttpContext.Session.GetInt32("IdUser")
+                };
 
-                experience.Companyname = experienceViewModel.Companyname;
-                experience.Endperiod = experienceViewModel.Endperiod;
-                experience.Position = experienceViewModel.Position;
-                experience.Idworkstatus = experienceViewModel.Idworkstatus;
-                experience.Initialperiod = experienceViewModel.initialperiod;
-                experience.Inmediateboss = experienceViewModel.Inmediateboss;
-                experience.Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre;
-                experience.Idcandidate = HttpContext.Session.GetInt32("IdUser");
+                if (id > 0)
+                {
+                    experience.Idexperience = id;
+                    db.Experience.Update(experience);
+                }
+                else
+                {
+                    db.Experience.Add(experience);
+                }
 
-                db.Experience.Add(experience);
                 db.SaveChanges();
 
                 Document document = new Document
@@ -62,13 +83,22 @@ namespace PastoralEmpleo.Controllers
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction("IndexDocument" , "Document");
+                return RedirectToAction("Document" , "Document");
             }
 
             return View(experienceViewModel);
         }
 
+        public ActionResult ExperienceList()
+        {
+            var a = db.Experience.Where(e => e.Idcandidate == HttpContext.Session.GetInt32("IdCandidate")).ToList();
+            return View(a);
+        }
 
-
+        // GET: List/Edit/5
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }

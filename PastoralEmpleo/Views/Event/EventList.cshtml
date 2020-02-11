@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PastoralEmpleo.Models.Event>
 @{
-    ViewData["Title"] = "IndexCallList";
+    ViewData["Title"] = "EventList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <a href="@Url.Action("IndexSearchCall", "CallList")" button type="button" class="btn btn-outline-warning btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff">Buscar...</a>
+        <a href="@Url.Action("EventSearch", "Event")" button type="button" class="btn btn-outline-warning btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff"><i class="fa fa-search"></i> Buscar...</a>
 
 
         <section>
@@ -113,21 +113,13 @@
                                             <td>
                                                 <ul class="breadcrumb breadcrumb-tabs">
                                                     <li>
-                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                        <a href="@Url.Action("Event", "Event", new { id=item.Idevent })" class="btn btn-success btn-rounded small" style="color:#000000">
                                                             Editar
                                                         </a>
 
-                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-custom btn-rounded small" style="color:#000000">
-                                                            Agregar
-                                                        </a>
-
-                                                        <a href="@Url.Action("Experience", "Inscription", new { id=item.Idevent })" class="btn btn-danger btn-rounded small" style="color:#000000">
-                                                            Eliminar
-                                                        </a>
-
-                                                        <a href="@Url.Action("Imprimir", "CallList" ,  new { id=item.Idevent })" class="btn btn-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
+                                                        <a href="@Url.Action("Imprimir", "Event" ,  new { id=item.Idevent })" class="btn btn-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
                                                             Imprimir
-                                                        </a>
+                                                        </a>                                                                                                                
 
                                                     </li>
 

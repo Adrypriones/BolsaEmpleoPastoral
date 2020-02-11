@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PastoralEmpleo.Models
+﻿namespace PastoralEmpleo.Models
 {
     public partial class Document
     {

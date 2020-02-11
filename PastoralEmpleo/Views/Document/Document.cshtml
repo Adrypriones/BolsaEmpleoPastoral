@@ -1,0 +1,62 @@
+﻿@model PastoralEmpleo.ViewModel.OtherDocumentsViewModel
+
+@{
+    ViewData["Title"] = "Document";
+    ViewData["Description"] = "Otros Documentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+
+    <div class="row">
+
+       <div class="container-fluid">
+           <div class="panel panel-info">
+
+               @using (Html.BeginForm("Document", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+               {
+
+                   @Html.AntiForgeryToken()
+
+                   <fieldset>
+
+
+
+                       <div class="container-fluid">
+                           <div class="row">
+
+                               <div class="col-xs-12 col-sm-6">
+                                   <div class="form-group label-floating">
+                                       @Html.LabelFor(model => model.Iddocumenttype, htmlAttributes: new { @class = "control-label" })
+                                       @Html.DropDownListFor(model => model.Iddocumenttype, Model.DocumentTypeList, "", new { @class = "form-control" })
+
+                                   </div>
+                               </div>
+
+                               <div class="col-xs-12 col-sm-6">
+                                   <div class="form-group label-floating">
+                                       <label asp-for="FilePath" class="control-label"></label>
+                                       <input asp-for="File" class="form-control" required type="File" />
+                                       <span asp-validation-for="File" class="text-danger"></span>
+                                   </div>
+                               </div>
+
+                           </div>
+                       </div>
+                   </fieldset>
+
+                   <div class="text-center">
+                       <div class="margin-top: 20px">
+                           <input type="submit" value="Guardar" class="btn btn-primary btn-bordred btn-sm" />
+                       </div>
+                   </div>
+
+                   <a href="@Url.Action("DocumentList", "Document")" button type="button" class="btn btn-outline-danger btn-rounded w-md waves-effect waves-light m-b-5" style="color:#ffffff"><i class="fa fa-list-alt"></i>Lista</a>
+
+               }
+
+           </div>
+        </div>
+    </div>
+
+</section>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+using PastoralEmpleo.Shared.Validations;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -13,9 +13,12 @@ namespace PastoralEmpleo.ViewModel
         public int Iddocumenttype { get; set; }
         public SelectList DocumentTypeList { get; set; }
 
+        public string Name { get; set; }
+
         [Display(Name = "Adjunta Documento")]
         public string FilePath { get; set; }
 
+        [AllowedExtensions(new string[] { ".pdf" })]
         public IFormFile File { get; set; }
     }
 

@@ -1,0 +1,108 @@
+﻿@model IEnumerable<PastoralEmpleo.Models.Studies>
+
+@{
+    ViewData["Title"] = "StudyListing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+
+    <section>
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-center"><i class="zmdi zmdi-account zmdi-hc-fw"></i> <small style="color:seagreen"><i class="fas fa-layer-group"></i>Listado Estudios</small></h1>
+            </div>
+        </div>
+
+
+        @{
+            ViewData["Title"] = "StudyListing";
+        }
+
+        <section>           
+
+            <div class="container-fluid">
+                <div class="panel panel-success">
+
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Institución</th>
+                                        <th class="text-center">Estudio</th>
+                                        <th class="text-center">Título</th>
+                                        <th class="text-center">Estado Acádemico</th>
+                                        <th class="text-center">Inicio</th>
+                                        <th class="text-center">Finalizó</th>
+                                        <th class="text-center">Periodicidad</th>
+                                        <th class="text-center">Documento</th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (var item in Model)
+
+                                {
+                                   <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.School)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Idstudylevel)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Obtainedtitle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Idacademicstate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Startdate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Enddate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Idperiodicity)
+                                    </td>                                    
+
+
+                                    <td>
+                                        <ul class="breadcrumb breadcrumb-tabs">
+                                            <li>
+                                                <a href="@Url.Action("Studies", "Inscription", new { id=item.Idstudies })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                    Editar
+                                                </a>
+
+                                                <a href="@Url.Action("Studies", "Studies")" class="btn btn-dribbble btn-rounded small " style="color:#000000">
+                                                    Nuevo
+                                                </a>
+
+                                            </li>
+
+                                        </ul>
+                                    </td>
+
+
+                                  </tr>
+                                }
+
+
+                            </table>
+
+                           
+                            <div class="col-sm-12 text-right">
+                                <a href="@Url.Action("Experience", "Experience")" class="text-primary m-l-5"><b>Siguiente</b></a></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+</body>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PastoralEmpleo.Models
 {
@@ -9,7 +8,7 @@ namespace PastoralEmpleo.Models
         public string Companyname { get; set; }
         public string Position { get; set; }
         public DateTime Initialperiod { get; set; }
-        public DateTime Endperiod { get; set; }       
+        public DateTime? Endperiod { get; set; }       
         public int? Idworkstatus { get; set; }
         public int? Idcandidate { get; set; }
         public string Inmediateboss { get; set; }

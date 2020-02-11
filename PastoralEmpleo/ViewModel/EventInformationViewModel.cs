@@ -33,11 +33,13 @@ namespace PastoralEmpleo.ViewModel
         [Display(Name = "Observaciones")]
         public string Observations { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "Fecha de Convocatoria")]
-        public DateTime Initialeventdate { get; set; }
+        public DateTime? Initialeventdate { get; set; }
 
         [Display(Name = "Fin de Convocatoria")]
-        public DateTime Endeventdate { get; set; }
+        public DateTime? Endeventdate { get; set; }
 
         [Display(Name = "Estado Convocatoria")]
         public int Idstatus { get; set; }
@@ -59,11 +61,11 @@ namespace PastoralEmpleo.ViewModel
         public string Place { get; set; }
 
         [Display(Name = "Tipo de Contrato")]
-        public int Idcontracttype { get; set; }
+        public int? Idcontracttype { get; set; }
         public SelectList ContractTypeList { get; set; }
 
         [Display(Name = "Forma de Pago")]
-        public int Idwaytopay { get; set; }
+        public int? Idwaytopay { get; set; }
         public SelectList WayTopayList { get; set; }
         
         public int Idevent { get; set; }

@@ -33,7 +33,11 @@ namespace PastoralEmpleo.Controllers
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
                 var fileName = Path.GetFileName(documentViewModel.File.FileName);
                 var filePath = Path.Combine(uploads, fileName);
-                documentViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
+                using (FileStream file = new FileStream(filePath, FileMode.Create))
+                {
+                    documentViewModel.File.CopyTo(file);
+                    file.Close();
+                }
 
                 Document document = new Document
                 {
@@ -80,6 +84,7 @@ namespace PastoralEmpleo.Controllers
             var fileName = Path.GetFileNameWithoutExtension(path);
 
             var stream = new FileStream($".\\wwwroot\\{path}", FileMode.Open);
+
             return File(stream, "application/pdf", fileName);
         }
 

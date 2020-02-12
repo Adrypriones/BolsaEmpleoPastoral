@@ -7,8 +7,8 @@ namespace PastoralEmpleo.Models
         public int Idstudies { get; set; }
         public string Obtainedtitle { get; set; }
         public string School { get; set; }
-        public DateTime Startdate { get; set; }
-        public DateTime Enddate { get; set; }
+        public DateTime? Startdate { get; set; }
+        public DateTime? Enddate { get; set; }
         public int? Idcandidate { get; set; }
         public int? Idstudylevel { get; set; }
         public int? Idacademicstate { get; set; }

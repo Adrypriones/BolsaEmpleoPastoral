@@ -37,41 +37,41 @@
                                         <th class="text-center">Inicio</th>
                                         <th class="text-center">Finalizó</th>
                                         <th class="text-center">Periodicidad</th>
-                                        <th class="text-center">Documento</th>
+                                        
                                     </tr>
                                 </thead>
 
                                 @foreach (var item in Model)
-
                                 {
                                    <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.School)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Idstudylevel)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Obtainedtitle)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Idacademicstate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Startdate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Enddate)
-                                    </td>
-                                    <td>
+                                      <td>
+                                         @Html.DisplayFor(modelItem => item.School)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Idstudylevel)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Obtainedtitle)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Idacademicstate)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Startdate)
+                                      </td>
+                                      <td>
+                                          @Html.DisplayFor(modelItem => item.Enddate)
+                                      </td>
+                                      <td>
                                         @Html.DisplayFor(modelItem => item.Idperiodicity)
-                                    </td>                                    
+                                      </td>                           
 
+                                      <td>
 
-                                    <td>
                                         <ul class="breadcrumb breadcrumb-tabs">
                                             <li>
-                                                <a href="@Url.Action("Studies", "Inscription", new { id=item.Idstudies })" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                
+                                                <a href="@Url.Action("Studies", "Studies", new { id=item.Idstudies })" class="btn btn-success btn-rounded small" style="color:#000000">
                                                     Editar
                                                 </a>
 
@@ -82,7 +82,8 @@
                                             </li>
 
                                         </ul>
-                                    </td>
+
+                                     </td>
 
 
                                   </tr>

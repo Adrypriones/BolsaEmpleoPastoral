@@ -29,6 +29,7 @@
                                     <tr>
                                         <th class="text-center">EMPRESA</th>
                                         <th class="text-center">CARGO</th>
+                                        <th class="text-center">ESTADO LABORAL</th>
                                         <th class="text-center">INGRESO</th>
                                         <th class="text-center">SALIDA</th>
                                         <th class="text-center">JEFE</th>
@@ -47,6 +48,9 @@
                                             @Html.DisplayFor(modelItem => item.Position)
                                         </td>
                                         <td>
+                                            @Html.DisplayFor(modelItem => item.Idworkstatus)
+                                        </td>
+                                        <td>
                                             @Html.DisplayFor(modelItem => item.Initialperiod)
                                         </td>
                                         <td>
@@ -62,6 +66,7 @@
                                         <td>
                                             <ul class="breadcrumb breadcrumb-tabs">
                                                 <li>
+                                                   
                                                     <a href="@Url.Action("Experience", "Experience", new { id=item.Idexperience })" class="btn btn-success btn-rounded small" style="color:#000000">
                                                         Editar
                                                     </a>

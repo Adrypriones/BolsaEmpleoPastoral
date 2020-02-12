@@ -18,6 +18,7 @@ namespace PastoralEmpleo.ViewModel
         [Display(Name = "Adjunta Documento")]
         public string FilePath { get; set; }
 
+        [AllowedExtensions(new string[] { ".pdf" })]
         public IFormFile File { get; set; }
 
         [Display(Name = "Apellido")]

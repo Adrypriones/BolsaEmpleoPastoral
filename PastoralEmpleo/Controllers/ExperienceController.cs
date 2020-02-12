@@ -44,11 +44,6 @@ namespace PastoralEmpleo.Controllers
         {
             if (ModelState.IsValid)
             {
-                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
-                var fileName = Path.GetFileName(experienceViewModel.File.FileName);
-                var filePath = Path.Combine(uploads, fileName);
-                experienceViewModel.File.CopyTo(new FileStream(filePath, FileMode.Create));
-
                 Experience experience = new Experience
                 {
                     Companyname = experienceViewModel.Companyname,
@@ -58,7 +53,7 @@ namespace PastoralEmpleo.Controllers
                     Initialperiod = (DateTime)experienceViewModel.Initialperiod,
                     Inmediateboss = experienceViewModel.Inmediateboss,
                     Inmediatechiefnumbre = experienceViewModel.Inmediatechiefnumbre,
-                    Idcandidate = HttpContext.Session.GetInt32("IdUser")
+                    Idcandidate = HttpContext.Session.GetInt32("IdCandidate")
                 };
 
                 if (id > 0)
@@ -73,10 +68,19 @@ namespace PastoralEmpleo.Controllers
 
                 db.SaveChanges();
 
+                var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\uploads");
+                var fileName = Path.GetFileName(experienceViewModel.File.FileName);
+                var filePath = Path.Combine(uploads, fileName);
+                using (FileStream file = new FileStream(filePath, FileMode.Create))
+                {
+                    experienceViewModel.File.CopyTo(file);
+                    file.Close();
+                }
+
                 Document document = new Document
                 {
                     Idcandidate = HttpContext.Session.GetInt32("IdCandidate"),
-                    Url = filePath,
+                    Url = $"\\uploads\\{fileName}",
                     Iddocumenttype = (int)DocumentTypeEnum.CartaLaboral,
                 };
 
@@ -85,6 +89,8 @@ namespace PastoralEmpleo.Controllers
 
                 return RedirectToAction("Document" , "Document");
             }
+
+            experienceViewModel.WorkStatusList = new SelectList(db.Workstatus.ToList(), "Idworkstatus", "Name", 1);
 
             return View(experienceViewModel);
         }

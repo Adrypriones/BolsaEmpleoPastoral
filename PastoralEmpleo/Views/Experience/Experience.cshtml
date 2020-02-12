@@ -39,7 +39,7 @@
                                         @Html.TextBoxFor(model => model.Position, new { @class = "form-control" })
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
                                         @Html.LabelFor(model => model.Idworkstatus, htmlAttributes: new { @class = "control-label" })
@@ -56,7 +56,7 @@
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
                                         <label asp-for="Endperiod" class="control-label"></label>
-                                        <input asp-for="Endperiod" class="form-control" type="date"/>
+                                        <input asp-for="Endperiod" class="form-control" type="date" />
                                         <span asp-validation-for="Endperiod" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -77,8 +77,9 @@
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label" })
-                                        <input type="file" name="File" class="form-control" required>
+                                        <label asp-for="FilePath" class="control-label"></label>
+                                        <input asp-for="File" class="form-control" required type="File" />
+                                        <span asp-validation-for="File" class="text-danger"></span>
                                     </div>
                                 </div>
 

@@ -9,7 +9,7 @@ namespace PastoralEmpleo.Models
             Experience = new HashSet<Experience>();
         }
 
-        public int Idworkstatus { get; set; }
+        public int? Idworkstatus { get; set; }
         public string Name { get; set; }
 
         public ICollection<Experience> Experience { get; set; }

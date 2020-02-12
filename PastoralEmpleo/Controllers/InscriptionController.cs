@@ -78,7 +78,7 @@ namespace PastoralEmpleo.Controllers
                 Document document = new Document
                 {  
                     Idcandidate = candidate.Idcandidate,
-                    Url = filePath,
+                    Url = $"\\uploads\\{fileName}",
                     Iddocumenttype = candidateViewModel.Iddocumenttype
                 };
 

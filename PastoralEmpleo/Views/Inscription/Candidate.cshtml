@@ -37,11 +37,13 @@
                                         @Html.TextBoxFor(model => model.Identitydocumento, new { @class = "form-control", maxlength = "10" })
                                     </div>
                                 </div>
+                                
 
                                 <div class="col-xs-12 col-sm-6">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.FilePath, htmlAttributes: new { @class = "control-label" })
-                                        <input type="file" name="File" class="form-control" required>
+                                        <label asp-for="FilePath" class="control-label"></label>
+                                        <input asp-for="File" class="form-control" required type="File" />
+                                        <span asp-validation-for="File" class="text-danger"></span>
                                     </div>
                                 </div>
 

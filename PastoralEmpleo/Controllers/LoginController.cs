@@ -57,12 +57,20 @@ namespace PastoralEmpleo.Controllers
             return View();
         }
 
-        public ActionResult Save([Bind("Name, Surname,Mail, Password")] User registro)
+        public ActionResult Save([Bind("Name, Surname,Mail, Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.User.Add(registro);
-                db.SaveChanges();
+                User userDB = db.User.FirstOrDefault(u => u.Mail == user.Mail);
+
+                if (userDB == null)
+                {
+                    db.User.Add(user);
+                    db.SaveChanges();
+                }
+
+                HttpContext.Session.SetInt32("IdUser", user.Iduser);
+
                 return RedirectToAction("Login");
             }
 

@@ -23,7 +23,7 @@ namespace PastoralEmpleo.Shared.Validations
             {
                 if (!_Extensions.Contains(extension.ToLower()))
                 {
-                    return new ValidationResult("Tipo de archivo no permitido.");
+                    return new ValidationResult("Tipo de archivo no permitido.Debe ser pdf");
                 }
             }
 

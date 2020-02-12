@@ -37,6 +37,7 @@ namespace PastoralEmpleo.ViewModel
         [Display(Name = "Adjunte Certificado")]
         public string FilePath { get; set; }
 
+        [AllowedExtensions(new string[] { ".pdf" })]
         public IFormFile File { get; set; }
 
         public int Iddocumenttype { get; set; }

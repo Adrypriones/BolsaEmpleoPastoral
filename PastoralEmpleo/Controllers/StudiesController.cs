@@ -89,7 +89,7 @@ namespace PastoralEmpleo.Controllers
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction("Experience", "Experience");
+                return RedirectToAction("StudyList");
             }
 
             return View(studiesViewModel);

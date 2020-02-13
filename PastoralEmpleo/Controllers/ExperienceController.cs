@@ -87,7 +87,7 @@ namespace PastoralEmpleo.Controllers
                 db.Document.Add(document);
                 db.SaveChanges();
 
-                return RedirectToAction("Document" , "Document");
+                return RedirectToAction("ExperienceList");
             }
 
             experienceViewModel.WorkStatusList = new SelectList(db.Workstatus.ToList(), "Idworkstatus", "Name", 1);

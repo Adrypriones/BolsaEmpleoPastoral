@@ -2,6 +2,8 @@
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
 using PastoralEmpleo.ViewModel;
@@ -89,7 +91,7 @@ namespace PastoralEmpleo.Controllers
                 else
                 {
                     db.Event.Add(eventObject);
-                } 
+                }
 
                 db.SaveChanges();
 
@@ -101,9 +103,18 @@ namespace PastoralEmpleo.Controllers
             return View(eventViewModel);
         }
 
-        public ActionResult EventList(List<Event> events)
+        public ActionResult EventList()
         {
-            if (!events.Any())
+            List<Event> events;
+
+            TempData.TryGetValue("eventList", out object eventList);
+
+            if (eventList != null)
+            {
+                events = JsonConvert.DeserializeObject<List<Event>>((string)eventList);
+                TempData.Remove("eventList");
+            }
+            else
             {
                 events = db.Event.ToList();
             }
@@ -126,14 +137,16 @@ namespace PastoralEmpleo.Controllers
         {
             var restult = db.Event.Where(e => e.Position.Contains(searchCallViewModel.Position)).ToList();
 
-            if (restult == null)
+            if (!restult.Any())
             {
                 TempData["Error"] = "CARGO NO ENCONTRADO";
 
                 return RedirectToAction("EventSearch");
             }
 
-            return RedirectToAction("EventList", restult);
+            TempData["eventList"] = JsonConvert.SerializeObject(restult);
+
+            return RedirectToAction("EventList");
         }
 
         public ActionResult EventSearch()
@@ -151,7 +164,8 @@ namespace PastoralEmpleo.Controllers
 
         private void GeneratePDF(int id)
         {
-            var evento = db.Event.FirstOrDefault(e => e.Idevent == id);
+            var evento = db.Event.Include(e => e.IdwaytopayNavigation).Include(e => e.IdcontracttypeNavigation).
+                FirstOrDefault(e => e.Idevent == id);
 
             string path = Directory.GetCurrentDirectory();
 
@@ -189,11 +203,11 @@ namespace PastoralEmpleo.Controllers
                 doc.Add(new Paragraph("Estudio:" + evento.Study));
                 doc.Add(new Paragraph("Experiencia:" + evento.Experience));
                 doc.Add(new Paragraph("Vacante:" + evento.Vacant));
-                doc.Add(new Paragraph("Tipo Contrato:" + evento.Idcontracttype));
+                doc.Add(new Paragraph("Tipo Contrato:" + evento.IdcontracttypeNavigation.Name));
                 doc.Add(new Paragraph("Tiempo Laboral:" + evento.Laboraltime));
                 doc.Add(new Paragraph("Lugar de Trabajo:" + evento.Place));
                 doc.Add(new Paragraph("Salario:" + evento.Salary));
-                doc.Add(new Paragraph("Pago:" + evento.Idwaytopay));
+                doc.Add(new Paragraph("Pago:" + evento.IdwaytopayNavigation.Name));
                 doc.Add(new Paragraph("Hora Entrada:" + evento.Initialjobetime));
                 doc.Add(new Paragraph("Hora Salida:" + evento.Endjobtime));
                 doc.Add(new Paragraph("Funciones:" + evento.Functions));

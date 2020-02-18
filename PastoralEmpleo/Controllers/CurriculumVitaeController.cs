@@ -18,36 +18,27 @@ namespace PastoralEmpleo.Controllers
     {
         private PastoralContext db = new PastoralContext();
         // GET: CurriculumVitae
+
         public ActionResult CurriculumVitae()
         {
-            return View();
-        }
+            List<Studies> studies;
 
-        public ActionResult Buscar([Bind("Position")] SearchCallViewModel searchCallViewModel)
-        {
-            var restult = db.Event.Where(e => e.Position.Contains(searchCallViewModel.Position)).ToList();
+            TempData.TryGetValue("curriculumVitae", out object curriculumVitae);
 
-            if (!restult.Any())
+            if (curriculumVitae != null)
             {
-                TempData["Error"] = "CARGO NO ENCONTRADO";
-
-                return RedirectToAction("EventSearch");
+                studies = JsonConvert.DeserializeObject<List<Studies>>((string)curriculumVitae);
+                TempData.Remove("curriculumVitae");
+            }
+            else
+            {
+                studies = db.Studies.ToList();
             }
 
-            TempData["eventList"] = JsonConvert.SerializeObject(restult);
+            return View(studies);
+        }      
 
-            return RedirectToAction("EventList");
-        }
-
-        public ActionResult EventSearch()
-        {
-            if (TempData["Error"] != null && !string.IsNullOrEmpty(TempData["Error"].ToString()))
-            {
-                ViewBag.Error = TempData["Error"].ToString();
-            }
-
-            return View();
-        }
+        
 
     }
 }

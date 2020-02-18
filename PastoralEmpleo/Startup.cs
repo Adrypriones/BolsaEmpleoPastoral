@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using PastoralEmpleo.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PastoralEmpleo.Services;
 
 namespace PastoralEmpleo
 {
@@ -38,6 +39,9 @@ namespace PastoralEmpleo
             services.AddSession();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddHttpContextAccessor();
+            services.AddTransient<AuthorizationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

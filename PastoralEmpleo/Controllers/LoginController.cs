@@ -2,7 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using PastoralEmpleo.Data;
 using PastoralEmpleo.Models;
+using PastoralEmpleo.Shared.Enum;
+using PastoralEmpleo.Shared.Utils;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using PastoralEmpleo.ViewModel;
+using System.Collections.Generic;
 
 namespace PastoralEmpleo.Controllers
 {
@@ -22,7 +27,7 @@ namespace PastoralEmpleo.Controllers
 
         public ActionResult Iniciar(string Mail, string Password)
         {
-            User user = db.User.FirstOrDefault(e => e.Mail == Mail && e.Password == Password);
+            User user = db.User.Include(u => u.Role).ThenInclude(r => r.RolePermission).ThenInclude(r => r.Permission).FirstOrDefault(e => e.Mail == Mail && e.Password == Password);
 
             if (user == null)
             {
@@ -32,6 +37,17 @@ namespace PastoralEmpleo.Controllers
             }
 
             HttpContext.Session.SetInt32("IdUser", user.Iduser);
+
+            var permissions = user.Role.RolePermission.Select(p => p.Permission).ToList();
+
+            Dictionary<int, string> permissionDictionary = new Dictionary<int, string>();
+
+            foreach(var permission in permissions)
+            {
+                permissionDictionary.Add(permission.Idpermission, permission.Code);
+            }
+
+            HttpContext.Session.SetObject("Permissions", permissionDictionary);
 
             var candidate = db.Candidate.FirstOrDefault(c => c.Iduser == user.Iduser);
 
@@ -44,8 +60,6 @@ namespace PastoralEmpleo.Controllers
         }
 
         // GET: Login/Details/5
-
-
         public ActionResult Register()
         {
             return View();
@@ -65,6 +79,7 @@ namespace PastoralEmpleo.Controllers
 
                 if (userDB == null)
                 {
+                    user.IdRole = (int)RoleEnum.Candidato;
                     db.User.Add(user);
                     db.SaveChanges();
                 }
@@ -91,8 +106,5 @@ namespace PastoralEmpleo.Controllers
                 return RedirectToAction("Register", "Login");
             }
         }
-
-
-
     }
 }

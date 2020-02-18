@@ -20,6 +20,9 @@ namespace PastoralEmpleo.Models
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
+        public int IdRole { get; set; }
+
         public Candidate Candidate { get; set; }
+        public Role Role { get; set; }
     }
 }

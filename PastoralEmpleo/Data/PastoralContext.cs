@@ -24,15 +24,15 @@ namespace PastoralEmpleo.Data
         public virtual DbSet<Event> Event { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Periodicity> Periodicity { get; set; }       
+        public virtual DbSet<Periodicity> Periodicity { get; set; }
+        public virtual DbSet<Permission> Permission { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<Studies> Studies { get; set; }
         public virtual DbSet<Studylevel> Studylevel { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Waytopay> Waytopay { get; set; }
         public virtual DbSet<Workstatus> Workstatus { get; set; }
-
-        // Unable to generate entity type for table 'announcement.candidateevent'. Please see the warning messages.
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -193,6 +193,59 @@ namespace PastoralEmpleo.Data
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.HasKey(e => e.Idrole);
+
+                entity.ToTable("role", "announcement");
+
+                entity.Property(e => e.Idrole)
+                    .HasColumnName("idrole")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name")
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Permission>(entity =>
+            {
+                entity.HasKey(e => e.Idpermission);
+
+                entity.ToTable("permission", "announcement");
+
+                entity.Property(e => e.Idpermission)
+                    .HasColumnName("idpermission")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name")
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("code")
+                    .HasMaxLength(45)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<RolePermission>(entity =>
+            {
+                entity.HasKey(pc => new { pc.Idrole, pc.Idpermission });
+
+                entity.HasOne(e => e.Role)
+                    .WithMany(e => e.RolePermission)
+                    .HasForeignKey(e => e.Idrole);
+
+                entity.HasOne(e => e.Permission)
+                    .WithMany(e => e.RolePermission)
+                    .HasForeignKey(e => e.Idpermission);
+            });
+
             modelBuilder.Entity<Contracttype>(entity =>
             {
                 entity.HasKey(e => e.Idcontracttype);
@@ -221,7 +274,7 @@ namespace PastoralEmpleo.Data
 
                 entity.Property(e => e.Iddocument)
                     .HasColumnName("iddocument")
-                    .HasColumnType("int(11)");                
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Idcandidate)
                     .HasColumnName("idcandidate")
@@ -276,7 +329,7 @@ namespace PastoralEmpleo.Data
                 entity.ToTable("event", "announcement");
 
                 entity.HasIndex(e => e.Idcontracttype)
-                    .HasName("fk_event_contracttype_id");              
+                    .HasName("fk_event_contracttype_id");
 
                 entity.HasIndex(e => e.Idwaytopay)
                     .HasName("fk_event_waytopay_id_idx");
@@ -432,7 +485,7 @@ namespace PastoralEmpleo.Data
 
                 entity.Property(e => e.Idcandidate)
                     .HasColumnName("idcandidate")
-                    .HasColumnType("int(11)");                
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Idworkstatus)
                     .HasColumnName("idworkstatus")
@@ -464,7 +517,7 @@ namespace PastoralEmpleo.Data
                     .WithOne(p => p.Experience)
                     .HasForeignKey<Experience>(d => d.Idcandidate)
                     .HasConstraintName("fk_experience_candidate_id");
-                
+
                 entity.HasOne(d => d.IdworkstatusNavigation)
                     .WithMany(p => p.Experience)
                     .HasForeignKey(d => d.Idworkstatus)
@@ -503,7 +556,7 @@ namespace PastoralEmpleo.Data
                     .HasColumnName("name")
                     .HasMaxLength(10)
                     .IsUnicode(false);
-            });            
+            });
 
             modelBuilder.Entity<Status>(entity =>
             {
@@ -539,7 +592,7 @@ namespace PastoralEmpleo.Data
                     .HasName("fk_studies_periodicity_id_idx");
 
                 entity.HasIndex(e => e.Idstudylevel)
-                    .HasName("fk_studies_studylevel_id_idx");               
+                    .HasName("fk_studies_studylevel_id_idx");
 
                 entity.Property(e => e.Idstudies)
                     .HasColumnName("idstudies")
@@ -652,6 +705,10 @@ namespace PastoralEmpleo.Data
                     .HasColumnName("surname")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.IdRole)
+                    .HasColumnName("idrole")
+                    .HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<Waytopay>(entity =>

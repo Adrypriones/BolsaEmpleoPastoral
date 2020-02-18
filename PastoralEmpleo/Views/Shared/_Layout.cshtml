@@ -1,4 +1,4 @@
-﻿
+﻿@inject PastoralEmpleo.Services.AuthorizationService AuthorizationService
 
 <!DOCTYPE html>
 <html>
@@ -84,7 +84,7 @@
                         <figcaption class="text-center text-titles">Mis datos</figcaption>
                     </figure>
 
-                    
+
                 </div>
                 <!-- End User -->
                 <!--- Sidemenu -->
@@ -112,11 +112,19 @@
                             <a asp-controller="Document" asp-action="Document" class="waves-effect" style="color:#004D97"><i class="fa fa-file-text"></i><span> Otros Documentos </span> </a>
                         </li>
 
-                        <li>
-                            <a asp-controller="Event" asp-action="Event" style="color:#004D97"><i class="fa fa-users"></i><span> Convocatoria </span> </a>
-                        </li>
+                        @if (AuthorizationService.IsAuthorized("Convocatoria"))
+                        {
+                            <li>
+                                <a asp-controller="Event" asp-action="Event" style="color:#004D97"><i class="fa fa-users"></i><span> Convocatoria </span> </a>
+                            </li>
+                        }
 
-
+                        @if (AuthorizationService.IsAuthorized("HojaVida"))
+                        {
+                            <li>
+                                <a asp-controller="CurriculumVitae" asp-action="CurriculumVitae" style="color:#004D97"><i class="fa fa-file-archive-o"></i><span> Hoja de Vida </span> </a>
+                            </li>
+                        }
 
                     </ul>
                     <div class="clearfix"></div>

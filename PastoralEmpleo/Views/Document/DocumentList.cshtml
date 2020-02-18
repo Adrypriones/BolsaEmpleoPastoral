@@ -29,45 +29,45 @@
                                     <tr>
                                         <th class="text-center">DOCUMENTO</th>
                                         <th class="text-center">CONSULTAR DOCUMENTO</th>
-                                        
+
 
                                     </tr>
                                 </thead>
 
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DocumentType)
-                                    </td>
+                                    <tr>
+                                        <td>
+                                            <label asp-for="@item.DocumentType" class="control-label"></label>
+                                        </td>
 
-                                    <td>
-                                        <ul class="breadcrumb breadcrumb-tabs">
-                                            <li>
-                                                <a asp-controller="Document" asp-action="Imprimir" asp-route-id="@item.IdDocument" class="btn btn-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
-                                                    Imprimir
-                                                </a>
-                                                <a asp-controller="Document" asp-action="Document" asp-route-id="@item.IdDocument" class="btn btn-success btn-rounded small" style="color:#000000">
-                                                    Editar
-                                                </a>
+                                        <td>
+                                            <ul class="breadcrumb breadcrumb-tabs">
+                                                <li>
+                                                    <a asp-controller="Document" asp-action="Imprimir" asp-route-id="@item.IdDocument" class="btn btn-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
+                                                        Imprimir
+                                                    </a>
+                                                    <a asp-controller="Document" asp-action="Document" asp-route-id="@item.IdDocument" class="btn btn-success btn-rounded small" style="color:#000000">
+                                                        Editar
+                                                    </a>
 
-                                                <a asp-controller="Document" asp-action="Document" class="btn btn-dribbble btn-rounded small " style="color:#000000">
-                                                    Nuevo
-                                                </a>
+                                                    <a asp-controller="Document" asp-action="Document" class="btn btn-dribbble btn-rounded small " style="color:#000000">
+                                                        Nuevo
+                                                    </a>
 
-                                            </li>
+                                                </li>
 
-                                        </ul>
-                                    </td>
-                                </tr>
+                                            </ul>
+                                        </td>
+                                    </tr>
                                 }
 
 
                             </table>
 
-                            <div class="col-sm-12 text-right">
-                                <a href="@Url.Action("Document", "Document")" class="text-primary m-l-5"><b>Anterior</b></a></p>
-                            </div>
+                            <a asp-controller="Document" asp-action="Generar" class="btn btn-outline-warning btn-rounded" w-md waves-effect waves-light m-b-5" style="color:#ffffff">
+                                Imprimir HV
+                            </a>
 
                         </div>
 
